@@ -1,0 +1,4 @@
+[tuned set] broken: answer_accuracy=0.10 correct_abstention=0.00 citation_rate=0.29
+[tuned set] fixed: answer_accuracy=1.00 correct_abstention=1.00 citation_rate=1.00
+[held-out set] broken: answer_accuracy=0.17 correct_abstention=0.00 citation_rate=0.25
+[held-out set] fixed: answer_accuracy=1.00 correct_abstention=0.50 citation_rate=0.88

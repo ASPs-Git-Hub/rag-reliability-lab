@@ -1,0 +1,15 @@
+[delivery] Standard delivery takes 2 to 4 business days. Express delivery takes 1 business day and costs 9.99 dollars. Orders over 50 dollars ship free with standard delivery.
+
+[returns] You can return unopened items within 30 days for a full refund. Opened items can be returned within 14 days for store credit. Perishable goods cannot be returned but can be refunded if they arrive damaged.
+
+[refunds] Refunds are issued to the original payment method within 5 to 7 business days after we receive the return. Store credit is added immediately.
+
+[substitutions] If an item is out of stock we substitute a similar product and show the change before packing. You can disable substitutions in Account Settings.
+
+[password] To reset your password choose Forgot password on the sign-in page. A reset link is valid for 60 minutes.
+
+[slots] Delivery slots can be changed up to 2 hours before the slot starts. After that the slot is locked.
+
+[allergens] Product allergen information is listed on each product page. We cannot guarantee a nut-free environment in our warehouses.
+
+[support] Support is available by chat from 8 am to 10 pm every day. Phone support is not offered.

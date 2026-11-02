@@ -1,0 +1,10 @@
+# Run 1 (before fixes), 2026-11-02: fixed system v0 failures found by the evaluation harness
+FAIL: test_fixed_answers_every_answerable_question (test_lab.Contracts.test_fixed_answers_every_answerable_question)
+AssertionError: 0.8 != 1.0
+FAIL: test_fixed_cites_sources (test_lab.Contracts.test_fixed_cites_sources)
+AssertionError: 0.9285714285714286 != 1.0
+Ran 12 tests in 0.011s
+FAILED (failures=2)
+fixed v0: answer_accuracy=0.80 abstention=1.00 citation=0.93
+MISS How long do refunds take? -> Standard delivery takes 2 to 4 business days. Express delivery takes 1 business day and co
+MISS What are the support hours? -> Phone support is not offered.

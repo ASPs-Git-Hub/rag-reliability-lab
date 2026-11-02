@@ -1,0 +1,22 @@
+# Set 3 (frozen) on the fixed system v1, BEFORE the answerability gate. 2026-11-02
+MISS Do you offer gift wrapping for delivery? -> Standard delivery takes 2 to 4 business days. Express delive 0.62
+MISS Can I get a refund in cash? -> Refunds are issued to the original payment method within 5 t 0.57
+MISS Do you have a loyalty program for deliveries? -> Standard delivery takes 2 to 4 business days. Express delive 0.62
+MISS Can I change my delivery address after ordering? -> Standard delivery takes 2 to 4 business days. Express delive 0.39
+MISS Is express delivery available on Sundays? -> Express delivery takes 1 business day and costs 9.99 dollars 0.4
+MISS Do you refund shipping costs? -> Refunds are issued to the original payment method within 5 t 0.36
+OK   How do I update my payment card? -> ABSTAIN 0.23
+OK   Can I pick up my order from a store? -> ABSTAIN 0.12
+OK   What is the maximum order weight? -> ABSTAIN 0.15
+MISS Do you offer support in Spanish? -> Support is available by chat from 8 am to 10 pm every day. P 0.78
+OK   What time is chat support open? -> Support is available by chat from 8 am to 10 pm every day. P 0.69
+OK   How do I reset my password? -> To reset your password choose Forgot password on the sign-in 0.81
+OK   Are substitutions optional? -> You can disable substitutions in Account Settings. 0.65
+OK   Do you offer free delivery? -> Orders over 50 dollars ship free with standard delivery. Sta 0.53
+MISS How fast is express shipping? -> ABSTAIN 0.15
+OK   How many days do I have to return a sealed item? -> You can return unopened items within 30 days for a full refu 0.56
+OK   When will my refund arrive? -> Refunds are issued to the original payment method within 5 t 0.36
+MISS Is there a phone helpline? -> ABSTAIN 0.19
+MISS Where do I find allergy information? -> ABSTAIN 0.21
+OK   Can I move my delivery slot to later? -> Delivery slots can be changed up to 2 hours before the slot  0.79
+answerable correct 7/10; unanswerable correctly abstained 3/10

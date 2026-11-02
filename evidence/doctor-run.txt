@@ -1,0 +1,14 @@
+$ python3 src/doctor.py fixtures/colab_style
+D1  unpinned requirements: gradio, openai
+D2  binds to "127.0.0.1" instead of 0.0.0.0
+D2  port is 8000, not 7860 or read from the environment
+D3  secret hard-coded in source
+D4  Colab-only import or path
+D5  file opened for reading but not in repo: data/faq.txt
+D6  README.md has no closed front matter block (---)
+7 issue(s)
+exit=1
+
+$ python3 src/doctor.py fixtures/spaces_ready
+0 issue(s)
+exit=0

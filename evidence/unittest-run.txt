@@ -1,0 +1,34 @@
+test_broken_never_abstains_on_any_set (test_lab.Contracts.test_broken_never_abstains_on_any_set) ... ok
+test_broken_never_cites (test_lab.Contracts.test_broken_never_cites) ... ok
+test_broken_rarely_answers_correctly (test_lab.Contracts.test_broken_rarely_answers_correctly) ... ok
+test_fixed_pinned_on_clean_frozen_set4 (test_lab.Contracts.test_fixed_pinned_on_clean_frozen_set4) ... ok
+test_fixed_pinned_on_tuned_set (test_lab.Contracts.test_fixed_pinned_on_tuned_set) ... ok
+test_known_residual_failure_is_recorded (test_lab.Contracts.test_known_residual_failure_is_recorded)
+Documented limit: a lexical gate still answers this trap. If this ever starts abstaining, update the README. ... ok
+test_return_address_trap_now_abstains (test_lab.Contracts.test_return_address_trap_now_abstains) ... ok
+test_the_answerability_gate_is_what_abstains (test_lab.Contracts.test_the_answerability_gate_is_what_abstains)
+With the gate off, the fixed system abstains on clearly fewer on-topic traps. ... ok
+test_bare_launch_is_clean (test_lab.Doctor.test_bare_launch_is_clean) ... ok
+test_broken_fixture_reports_all_causes (test_lab.Doctor.test_broken_fixture_reports_all_causes) ... ok
+test_commented_out_bad_code_is_ignored (test_lab.Doctor.test_commented_out_bad_code_is_ignored) ... ok
+test_missing_app_is_reported (test_lab.Doctor.test_missing_app_is_reported) ... ok
+test_nonsense_front_matter_flagged (test_lab.Doctor.test_nonsense_front_matter_flagged) ... ok
+test_ready_fixture_is_clean (test_lab.Doctor.test_ready_fixture_is_clean) ... ok
+test_requirement_parsing (test_lab.Doctor.test_requirement_parsing) ... ok
+test_secret_in_oddly_named_variable_flagged (test_lab.Doctor.test_secret_in_oddly_named_variable_flagged) ... ok
+test_write_mode_open_is_not_a_missing_input (test_lab.Doctor.test_write_mode_open_is_not_a_missing_input) ... ok
+test_wrong_host_and_port_hidden_in_comment_still_flagged (test_lab.Doctor.test_wrong_host_and_port_hidden_in_comment_still_flagged) ... ok
+test_empty_stratum_does_not_divide_by_zero (test_lab.Grading.test_empty_stratum_does_not_divide_by_zero) ... ok
+test_negated_phrase_is_not_a_match (test_lab.Grading.test_negated_phrase_is_not_a_match) ... ok
+test_phrase_that_itself_contains_negation (test_lab.Grading.test_phrase_that_itself_contains_negation) ... ok
+test_phrase_with_unrelated_earlier_negation_is_a_match (test_lab.Grading.test_phrase_with_unrelated_earlier_negation_is_a_match) ... ok
+test_wilson_interval (test_lab.Grading.test_wilson_interval) ... ok
+test_docs_loaded (test_lab.Retrieval.test_docs_loaded) ... ok
+test_empty_corpus_abstains_instead_of_crashing (test_lab.Retrieval.test_empty_corpus_abstains_instead_of_crashing) ... ok
+test_invalid_window_rejected_with_a_clear_message (test_lab.Retrieval.test_invalid_window_rejected_with_a_clear_message) ... ok
+test_normalisation_matches_punctuation_and_case (test_lab.Retrieval.test_normalisation_matches_punctuation_and_case) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.015s
+
+OK

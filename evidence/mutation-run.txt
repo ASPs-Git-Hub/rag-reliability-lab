@@ -1,0 +1,21 @@
+M01 KILLED   rag.py: answerability gate removed
+M02 KILLED   rag.py: similarity threshold removed
+M03 KILLED   rag.py: title boost removed
+M04 KILLED   rag.py: overlapping sliding windows
+M05 KILLED   rag.py: trailing dots no longer stripped
+M06 KILLED   rag.py: empty-corpus guard removed
+M07 KILLED   rag.py: window validation removed
+M08 KILLED   rag.py: generic question words kept
+M09 KILLED   evaluate.py: negation guard removed
+M10 KILLED   doctor.py: comments no longer stripped
+M11 KILLED   doctor.py: write-mode opens treated as inputs
+M12 KILLED   doctor.py: loose pins not reported
+M13 KILLED   doctor.py: front matter sdk check removed
+M14 KILLED   doctor.py: app_file existence check removed
+M15 KILLED   doctor.py: host check removed
+M16 KILLED   doctor.py: port check removed
+M17 KILLED   doctor.py: secret check removed
+M18 KILLED   doctor.py: Colab check removed
+M19 KILLED   doctor.py: missing-file check removed
+restored baseline passes: True
+19 of 19 mutations killed

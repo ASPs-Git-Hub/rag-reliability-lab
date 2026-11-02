@@ -1,0 +1,22 @@
+{
+  "note": "Written 2026-11-02 AFTER the coverage sweep (evidence/run5) but BEFORE choosing the default min_coverage, and committed on its own, so the chosen default cannot have been tuned on these questions. expect=null means the FAQ cannot answer and the system must abstain.",
+  "questions": [
+    {"q": "Do you charge a fee for rescheduling a delivery?", "expect": null, "doc": null},
+    {"q": "What payment methods do you accept?", "expect": null, "doc": null},
+    {"q": "Do you deliver on public holidays?", "expect": null, "doc": null},
+    {"q": "How do I change my account email?", "expect": null, "doc": null},
+    {"q": "Is there a mobile app?", "expect": null, "doc": null},
+    {"q": "Can I place a bulk order for a business?", "expect": null, "doc": null},
+    {"q": "What is the delivery cost for orders under 50 dollars with standard delivery?", "expect": null, "doc": null},
+    {"q": "How long is a store credit valid?", "expect": null, "doc": null},
+    {"q": "Do you sell organic products?", "expect": null, "doc": null},
+    {"q": "What does express delivery cost?", "expect": "9.99", "doc": "delivery"},
+    {"q": "Can I disable product substitutions?", "expect": "disable substitutions", "doc": "substitutions"},
+    {"q": "Is phone support offered?", "expect": "not offered", "doc": "support"},
+    {"q": "How long does a reset link last?", "expect": "60 minutes", "doc": "password"},
+    {"q": "What happens if I receive a damaged perishable item?", "expect": "refunded", "doc": "returns"},
+    {"q": "How many days for refunds to reach my card?", "expect": "5 to 7 business days", "doc": "refunds"},
+    {"q": "Can I return an unopened item?", "expect": "30 days", "doc": "returns"},
+    {"q": "Does the warehouse guarantee no nuts?", "expect": "cannot guarantee", "doc": "allergens"}
+  ]
+}

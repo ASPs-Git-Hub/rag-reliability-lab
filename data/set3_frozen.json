@@ -1,0 +1,25 @@
+{
+  "note": "Written 2026-11-02 BEFORE the answerability gate and metric changes, committed on its own, so it cannot have been tuned on. expect=null means the FAQ cannot answer and the system must abstain.",
+  "questions": [
+    {"q": "Do you offer gift wrapping for delivery?", "expect": null, "doc": null},
+    {"q": "Can I get a refund in cash?", "expect": null, "doc": null},
+    {"q": "Do you have a loyalty program for deliveries?", "expect": null, "doc": null},
+    {"q": "Can I change my delivery address after ordering?", "expect": null, "doc": null},
+    {"q": "Is express delivery available on Sundays?", "expect": null, "doc": null},
+    {"q": "Do you refund shipping costs?", "expect": null, "doc": null},
+    {"q": "How do I update my payment card?", "expect": null, "doc": null},
+    {"q": "Can I pick up my order from a store?", "expect": null, "doc": null},
+    {"q": "What is the maximum order weight?", "expect": null, "doc": null},
+    {"q": "Do you offer support in Spanish?", "expect": null, "doc": null},
+    {"q": "What time is chat support open?", "expect": "8 am to 10 pm", "doc": "support"},
+    {"q": "How do I reset my password?", "expect": "forgot password", "doc": "password"},
+    {"q": "Are substitutions optional?", "expect": "disable substitutions", "doc": "substitutions"},
+    {"q": "Do you offer free delivery?", "expect": "over 50 dollars", "doc": "delivery"},
+    {"q": "How fast is express shipping?", "expect": "1 business day", "doc": "delivery"},
+    {"q": "How many days do I have to return a sealed item?", "expect": "30 days", "doc": "returns"},
+    {"q": "When will my refund arrive?", "expect": "5 to 7 business days", "doc": "refunds"},
+    {"q": "Is there a phone helpline?", "expect": "not offered", "doc": "support"},
+    {"q": "Where do I find allergy information?", "expect": "product page", "doc": "allergens"},
+    {"q": "Can I move my delivery slot to later?", "expect": "2 hours", "doc": "slots"}
+  ]
+}
