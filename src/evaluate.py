@@ -123,6 +123,14 @@ def main():
         docs = load_docs(f.read())
     if "--sweep" in sys.argv:
         return sweep(docs)
+    if "--v2" in sys.argv:  # the real-data fix, frozen weights fitted on Wikipedia text, run on the grocer FAQ
+        from rag2 import RAGv2
+        for label, golden in (("tuned (14 q)", TUNED), ("second set (8 q)", HELDOUT), ("frozen set 3 (20 q)", load_set3()),
+                              ("frozen set 4 (17 q, clean test)", load_set4())):
+            m = run(RAGv2(docs), golden)
+            print(f"[{label}] v2: answerable correct {fmt(*m['answerable_correct'])}; "
+                  f"unanswerable abstained {fmt(*m['unanswerable_abstained'])}; citations correct {fmt(*m['citations_correct'])}")
+        return
     sets = (("tuned (14 q)", TUNED), ("second set (8 q)", HELDOUT), ("frozen set 3 (20 q)", load_set3()),
             ("frozen set 4 (17 q, clean test)", load_set4()))
     for label, golden in sets:

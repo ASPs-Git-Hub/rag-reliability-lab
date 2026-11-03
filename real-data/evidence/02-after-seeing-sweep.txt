@@ -1,0 +1,17 @@
+documents 621; questions 6247; answerable 3068; unanswerable 3179
+AFTER-SEEING-RESULTS SWEEP, tuned on the test questions, not a result
+min_coverage sweep at threshold 0.30
+  cov=0.0: answerable correct 1359/3068 = 44.3% (95% CI 42.5%-46.1%) | unanswerable refused 1751/3179 = 55.1% (95% CI 53.3%-56.8%)
+  cov=0.3: answerable correct 1354/3068 = 44.1% (95% CI 42.4%-45.9%) | unanswerable refused 1773/3179 = 55.8% (95% CI 54.0%-57.5%)
+  cov=0.5: answerable correct 1300/3068 = 42.4% (95% CI 40.6%-44.1%) | unanswerable refused 1879/3179 = 59.1% (95% CI 57.4%-60.8%)
+  cov=0.7: answerable correct 913/3068 = 29.8% (95% CI 28.2%-31.4%) | unanswerable refused 2379/3179 = 74.8% (95% CI 73.3%-76.3%)
+  cov=0.8: answerable correct 680/3068 = 22.2% (95% CI 20.7%-23.7%) | unanswerable refused 2608/3179 = 82.0% (95% CI 80.7%-83.3%)
+  cov=0.9: answerable correct 355/3068 = 11.6% (95% CI 10.5%-12.8%) | unanswerable refused 2936/3179 = 92.4% (95% CI 91.4%-93.2%)
+  cov=1.0: answerable correct 330/3068 = 10.8% (95% CI 9.7%-11.9%) | unanswerable refused 2949/3179 = 92.8% (95% CI 91.8%-93.6%)
+threshold sweep at min_coverage 0.5
+  thr=0.1: answerable correct 1840/3068 = 60.0% (95% CI 58.2%-61.7%) | unanswerable refused 797/3179 = 25.1% (95% CI 23.6%-26.6%)
+  thr=0.2: answerable correct 1750/3068 = 57.0% (95% CI 55.3%-58.8%) | unanswerable refused 1068/3179 = 33.6% (95% CI 32.0%-35.3%)
+  thr=0.3: answerable correct 1300/3068 = 42.4% (95% CI 40.6%-44.1%) | unanswerable refused 1879/3179 = 59.1% (95% CI 57.4%-60.8%)
+  thr=0.4: answerable correct 696/3068 = 22.7% (95% CI 21.2%-24.2%) | unanswerable refused 2611/3179 = 82.1% (95% CI 80.8%-83.4%)
+  thr=0.5: answerable correct 230/3068 = 7.5% (95% CI 6.6%-8.5%) | unanswerable refused 3004/3179 = 94.5% (95% CI 93.6%-95.2%)
+  thr=0.6: answerable correct 48/3068 = 1.6% (95% CI 1.2%-2.1%) | unanswerable refused 3135/3179 = 98.6% (95% CI 98.1%-99.0%)

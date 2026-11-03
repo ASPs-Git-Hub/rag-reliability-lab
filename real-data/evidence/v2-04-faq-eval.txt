@@ -1,0 +1,4 @@
+[tuned (14 q)] v2: answerable correct 3/10 (95% CI 11%-60%); unanswerable abstained 4/4 (95% CI 51%-100%); citations correct 3/10 (95% CI 11%-60%)
+[second set (8 q)] v2: answerable correct 1/6 (95% CI 3%-56%); unanswerable abstained 2/2 (95% CI 34%-100%); citations correct 1/6 (95% CI 3%-56%)
+[frozen set 3 (20 q)] v2: answerable correct 1/10 (95% CI 2%-40%); unanswerable abstained 10/10 (95% CI 72%-100%); citations correct 1/10 (95% CI 2%-40%)
+[frozen set 4 (17 q, clean test)] v2: answerable correct 3/8 (95% CI 14%-69%); unanswerable abstained 9/9 (95% CI 70%-100%); citations correct 3/8 (95% CI 14%-69%)

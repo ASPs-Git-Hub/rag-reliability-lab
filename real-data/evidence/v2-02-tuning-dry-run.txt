@@ -1,0 +1,215 @@
+split tune: documents 583; questions 5626; answerable 2860; unanswerable 2766
+files in this run (first 16 hex of sha256):
+  ../src/rag.py: 5f4e935ba6039e06
+  ../src/rag2.py: 9e640c50933d5540
+  PROTOCOL-v2.md: (file absent)
+  run_eval_v2.py: ab44e096c4bd0eaa
+  report_v2.py: 0e086a77058e1a1d
+v2 frozen gate threshold 0.5; retrieval {'k1': 0.9, 'b': 0.5, 'w_par': 0.6, 'w_type': 0.1}
+v1 done in 31s
+
+HEADLINE (same frozen questions, same scoring rule as PROTOCOL.md)
+v1 (RAG, before): answerable correct 1291/2860 = 45.1% (95% CI 43.3%-47.0%)
+v1 (RAG, before): answerable correct, looser (cited paragraph holds the answer) 1412/2860 = 49.4% (95% CI 47.5%-51.2%)
+v1 (RAG, before): answerable refused 1291/2860 = 45.1% (95% CI 43.3%-47.0%)
+v1 (RAG, before): unanswerable correctly refused 1649/2766 = 59.6% (95% CI 57.8%-61.4%)
+v1 (RAG, before): mean of the two rates (the pre-declared objective) 52.4%
+v2 (RAGv2, after): answerable correct 1079/2860 = 37.7% (95% CI 36.0%-39.5%)
+v2 (RAGv2, after): answerable correct, looser (cited paragraph holds the answer) 1127/2860 = 39.4% (95% CI 37.6%-41.2%)
+v2 (RAGv2, after): answerable refused 1686/2860 = 59.0% (95% CI 57.1%-60.7%)
+v2 (RAGv2, after): unanswerable correctly refused 2171/2766 = 78.5% (95% CI 76.9%-80.0%)
+v2 (RAGv2, after): mean of the two rates (the pre-declared objective) 58.1%
+CHECK v1 reproduces the frozen run in evidence/01-frozen-run.txt (1300 answerable correct, 1879 refused): 1291 and 1649 (only meaningful on the test split)
+
+PAIRED, answerable questions: both right 780; only v1 right 511; only v2 right 299; neither 1270
+PAIRED, unanswerable questions: both refuse 1481; only v1 refuses 168; only v2 refuses 690; neither 427
+
+ERROR CATEGORIES, before vs after (same questions; every question lands in exactly one row of its kind)
+category                                     v1 before  v2 after
+answerable: correct                               1291      1079
+answerable: refused_answerable                    1291      1686
+answerable: wrong_paragraph                        157        47
+answerable: right_paragraph_wrong_sentence         121        48
+unanswerable: correct_refusal                     1649      2171
+unanswerable: answered_from_own_paragraph          956       567
+unanswerable: answered_from_other_paragraph        161        28
+  of v2 refusals of answerable: sentence right       n/a      1046
+  of v2 refusals of answerable: sentence wrong       n/a       640
+(v1 sums: answerable 2860, unanswerable 2766; v2 sums: answerable 2860, unanswerable 2766)
+
+RETRIEVAL ALONE (v2, never refusing): top sentence holds a gold answer for 2125/2860 = 74.3% (95% CI 72.7%-75.9%)
+
+TRADE-OFF CURVE of the frozen v2 scorer on these questions (threshold varied, NOT re-chosen; descriptive, not a second result)
+  thr=0.05: answerable correct 74.3% | unanswerable refused 1.5% | mean 37.9%
+  thr=0.10: answerable correct 74.2% | unanswerable refused 5.2% | mean 39.7%
+  thr=0.15: answerable correct 73.5% | unanswerable refused 9.2% | mean 41.3%
+  thr=0.20: answerable correct 72.0% | unanswerable refused 15.9% | mean 44.0%
+  thr=0.25: answerable correct 69.1% | unanswerable refused 26.2% | mean 47.7%
+  thr=0.30: answerable correct 64.7% | unanswerable refused 37.8% | mean 51.3%
+  thr=0.35: answerable correct 58.7% | unanswerable refused 49.3% | mean 54.0%
+  thr=0.40: answerable correct 51.6% | unanswerable refused 60.8% | mean 56.2%
+  thr=0.45: answerable correct 44.0% | unanswerable refused 70.3% | mean 57.1%
+  thr=0.50: answerable correct 37.7% | unanswerable refused 78.5% | mean 58.1%
+  thr=0.55: answerable correct 30.9% | unanswerable refused 84.1% | mean 57.5%
+  thr=0.60: answerable correct 25.6% | unanswerable refused 89.2% | mean 57.4%
+  thr=0.65: answerable correct 20.0% | unanswerable refused 92.6% | mean 56.3%
+  thr=0.70: answerable correct 12.2% | unanswerable refused 95.9% | mean 54.1%
+  thr=0.75: answerable correct 4.7% | unanswerable refused 98.6% | mean 51.6%
+  thr=0.80: answerable correct 0.9% | unanswerable refused 99.8% | mean 50.4%
+  thr=0.85: answerable correct 0.0% | unanswerable refused 100.0% | mean 50.0%
+  thr=0.90: answerable correct 0.0% | unanswerable refused 100.0% | mean 50.0%
+  thr=0.95: answerable correct 0.0% | unanswerable refused 100.0% | mean 50.0%
+  at least v1's refusal rate (59.6%), the best v2 threshold on this grid answers 51.6% correctly (v1: 45.1%)
+  at least v1's answerable rate (45.1%), the best v2 threshold on this grid refuses 60.8% of unanswerable (v1: 59.6%)
+
+--- answerable, v2 answered wrongly (wrong paragraph): 47; first 6
+  Q: How many volumes are contained in the library?
+    gold: ['18 million', '18 million volumes']
+    v2 sentence: "The university's main library is the Regenstein Library, which contains one of the largest collections of print volumes in the United States." cited=University_of_Chicago_p17 p=0.66
+  Q: Why are there more poor people in the United States and Europe than China?
+    gold: ['greater tendency to take on debts']
+    v2 sentence: "Oxfam's claims have however been questioned on the basis of the methodology used: by using net wealth (adding up assets and subtracting debts), the Oxfam report, for instance, find" cited=Economic_inequality_p0 p=0.64
+  Q: What is controled by the market and economy?
+    gold: ['wages', 'workers wages']
+    v2 sentence: 'It was re-established in April 1991, following the end of the post-war communist control of the country and the reintroduction of a free-market economy.' cited=Warsaw_p32 p=0.61
+  Q: What increases with the increase of income inequality?
+    gold: ['entrepreneurship rates']
+    v2 sentence: 'Education, especially in an area where there is a high demand for workers, creates high wages for those with this education, however, increases in education first increase and then' cited=Economic_inequality_p8 p=0.62
+  Q: Health problems were lower in places with higher levels of what?
+    gold: ['equality']
+    v2 sentence: 'Effects of inequality researchers have found include higher rates of health and social problems, and lower rates of social goods, a lower level of economic utility in society from ' cited=Economic_inequality_p19 p=0.51
+  Q: When was the University of Chicago established?
+    gold: ['1890']
+    v2 sentence: 'In 2008, the University of Chicago announced plans to establish the Milton Friedman Institute which attracted both support and controversy from faculty members and students.' cited=University_of_Chicago_p8 p=0.63
+
+--- answerable, v2 refused though its sentence was right: 1046; first 6
+  Q: When did the undergraduate program become coeducational?
+    gold: ['1977']
+    v2 sentence: 'The undergraduate college became coeducational after its 1977 merger with Radcliffe College.' cited=Harvard_University_p0 p=0.38
+  Q: What organization did Harvard found in 1900?
+    gold: ['association of american universities']
+    v2 sentence: "With Harper's vision in mind, the University of Chicago also became one of the 14 founding members of the Association of American Universities, an international organization of lea" cited=University_of_Chicago_p2 p=0.25
+  Q: How many US presidents are alumni of the school?
+    gold: ['eight', 'eight us presidents']
+    v2 sentence: "Harvard's alumni include eight U.S." cited=Harvard_University_p1 p=0.20
+  Q: How many Nobel Laureates are among the school alumni?
+    gold: ['150', '150 nobel laureates']
+    v2 sentence: 'To date, some 150 Nobel laureates, 18 Fields Medalists and 13 Turing Award winners have been affiliated as students, faculty, or staff.' cited=Harvard_University_p1 p=0.27
+  Q: In what year was the school renamed as Harvard College?
+    gold: ['1639']
+    v2 sentence: 'In 1639, the college was renamed Harvard College after deceased clergyman John Harvard, who was an alumnus of the University of Cambridge.' cited=Harvard_University_p3 p=0.45
+  Q: Ministers of what faith were trained by the university in early years?
+    gold: ['puritan', 'puritan ministers']
+    v2 sentence: 'In the early years the College trained many Puritan ministers.[citation needed] (A 1643 publication said the school\'s purpose was "to advance learning and perpetuate it to posterit' cited=Harvard_University_p4 p=0.46
+
+--- unanswerable, v2 answered (from own paragraph): 567; first 6
+  Q: How large is the Allston neighborhood in Boston?
+    gold: (unanswerable)
+    v2 sentence: 'The University is organized into eleven separate academic units—ten faculties and the Radcliffe Institute for Advanced Study—with campuses throughout the Boston metropolitan area: ' cited=Harvard_University_p2 p=0.51
+  Q: What was the purpose of Cambridge when it was founded in 1643?
+    gold: (unanswerable)
+    v2 sentence: 'In the early years the College trained many Puritan ministers.[citation needed] (A 1643 publication said the school\'s purpose was "to advance learning and perpetuate it to posterit' cited=Harvard_University_p4 p=0.51
+  Q: What has Cambridge purchased in Allston?
+    gold: (unanswerable)
+    v2 sentence: 'Harvard has purchased tracts of land in Allston, a walk across the Charles River from Cambridge, with the intent of major expansion southward.' cited=Harvard_University_p12 p=0.62
+  Q: Why has Cambridge purchased land in Allston?
+    gold: (unanswerable)
+    v2 sentence: 'Harvard has purchased tracts of land in Allston, a walk across the Charles River from Cambridge, with the intent of major expansion southward.' cited=Harvard_University_p12 p=0.67
+  Q: How much land does Cambridge own in Allston?
+    gold: (unanswerable)
+    v2 sentence: 'The university now owns approximately fifty percent more land in Allston than in Cambridge.' cited=Harvard_University_p12 p=0.64
+  Q: In what year did South African Vice Consul Duke Kent-Brown take office?
+    gold: (unanswerable)
+    v2 sentence: 'During the divestment from South Africa movement in the late 1980s, student activists erected a symbolic "shantytown" on Harvard Yard and blockaded a speech given by South African ' cited=Harvard_University_p15 p=0.57
+
+SPOT CHECK SAMPLE (not yet read by hand): 30 of 595 unanswerable questions v2 answered
+[1] 5acf82c277cf76001a685068 Q: Like the University of Hyde Park, what did Shimer College and 10 other schools adopt?
+     own=University_of_Chicago_p6 cited=University_of_Chicago_p6
+     returned: During this period the university, like Shimer College and 10 others, adopted an early entrant program that allowed very young students to attend college; in addition, students enrolled at Shimer were enabled to transfer automatically to the University of Chicago after their second year, having taken comparable or identical examinations and courses.
+[2] 5ad40c2d604f3c001a40004a Q:  What Chinese system did Kublai's government not compromise with?
+     own=Yuan_dynasty_p40 cited=Yuan_dynasty_p40
+     returned: Politically, the system of government created by Kublai Khan was the product of a compromise between Mongolian patrimonial feudalism and the traditional Chinese autocratic-bureaucratic system.
+[3] 5ad4b0f25b96ef001a109dbd Q: What does not compete with commensal flora for food and space?
+     own=Immune_system_p8 cited=Immune_system_p8
+     returned: Within the genitourinary and gastrointestinal tracts, commensal flora serve as biological barriers by competing with pathogenic bacteria for food and space and, in some cases, by changing the conditions in their environment, such as pH or available iron.
+[4] 5ad4d91d5b96ef001a10a384 Q: What does the loss of the thymus at an early age prevent?
+     own=Immune_system_p29 cited=Immune_system_p29
+     returned: Additionally, the loss of the thymus at an early age through genetic mutation or surgical removal results in severe immunodeficiency and a high susceptibility to infection.
+[5] 5ad400f0604f3c001a3ffcf0 Q:  When did Genghis Khan kill Great Khan?
+     own=Yuan_dynasty_p3 cited=Yuan_dynasty_p3
+     returned: Genghis Khan united the Mongol and Turkic tribes of the steppes and became Great Khan in 1206.
+[6] 5ad260dbd7d075001a428fd8 Q: What does the utilitarian principle seek for the lowest number of people?
+     own=Economic_inequality_p25 cited=Economic_inequality_p25
+     returned: Following the utilitarian principle of seeking the greatest good for the greatest number – economic inequality is problematic.
+[7] 5ad26a5fd7d075001a42931a Q: What increases or decreases in response to applied friction?
+     own=Force_p14 cited=Force_p14
+     returned: The static friction increases or decreases in response to the applied force up to an upper limit determined by the characteristics of the contact between the surface and the object.
+[8] 5a89320b3b2508001a72a50f Q: What organization offers monetary awards for identifying primes with at least 150,000 digits?
+     own=Prime_number_p13 cited=Prime_number_p13
+     returned: The Electronic Frontier Foundation also offers $150,000 and $250,000 for primes with at least 100 million digits and 1 billion digits, respectively.
+[9] 5ad26a5fd7d075001a42931b Q: What increases or decreases in response to static friction?
+     own=Force_p14 cited=Force_p14
+     returned: The static friction increases or decreases in response to the applied force up to an upper limit determined by the characteristics of the contact between the surface and the object.
+[10] 5ad25efad7d075001a428f5a Q: Who formulated the laws of motion that were not improved-on for nearly three thousand years?
+     own=Force_p0 cited=Force_p0
+     returned: With his mathematical insight, Sir Isaac Newton formulated laws of motion that were not improved-on for nearly three hundred years.
+[11] 5acfa09277cf76001a6855cc Q: What are ten of the sororities members of?
+     own=University_of_Chicago_p25 cited=University_of_Chicago_p25
+     returned: Four of the sororities are members of the National Panhellenic Conference, and ten of the fraternities form the University of Chicago Interfraternity Council.
+[12] 5ad4d4795b96ef001a10a233 Q: What cells do gamma delta T cells not share characteristics with?
+     own=Immune_system_p19 cited=Immune_system_p19
+     returned: Gamma delta T cells (γδ T cells) possess an alternative T cell receptor (TCR) as opposed to CD4+ and CD8+ (αβ) T cells and share the characteristics of helper T cells, cytotoxic T cells and NK cells.
+[13] 5ad03b7977cf76001a686eaa Q:  What was not the capital of the Ottoman empire?
+     own=Imperialism_p38 cited=Imperialism_p38
+     returned: With Istanbul as its capital and control of lands around the Mediterranean basin, the Ottoman Empire was at the center of interactions between the Eastern and Western worlds for six centuries.
+[14] 5ad4e90e5b96ef001a10a60c Q: What becomes more adept at producing vitamin D as a person ages?
+     own=Immune_system_p25 cited=Immune_system_p25
+     returned: Second, as a person ages the skin becomes less adept at producing vitamin D.
+[15] 5ad29d35d7d075001a429c15 Q: What is the sea level of the Irish Channel?
+     own=Rhine_p28 cited=Rhine_p28
+     returned: The English Channel, the Irish Channel and most of the North Sea were dry land, mainly because sea level was approximately 120 m (390 ft) lower than today.
+[16] 5ad3bb68604f3c001a3feec3 Q: Who was defeated by Montcalm at Quebec?
+     own=French_and_Indian_War_p40 cited=French_and_Indian_War_p40
+     returned: British victories continued in all theaters in the Annus Mirabilis of 1759, when they finally captured Ticonderoga, James Wolfe defeated Montcalm at Quebec (in a battle that claimed the lives of both commanders), and victory at Fort Niagara successfully cut off the French frontier forts further to the west and south.
+[17] 5ad4d4795b96ef001a10a234 Q: What is fully understood about γδ T cells?
+     own=Immune_system_p19 cited=Immune_system_p19
+     returned: The conditions that produce responses from γδ T cells are not fully understood.
+[18] 5ad28a54d7d075001a4299aa Q: What ends in the same delta?
+     own=Rhine_p19 cited=Rhine_p19
+     returned: However, this name is also used for the river delta where the Rhine flows into Lake Constance, so it is clearer to call the larger one Rhine-Meuse delta, or even Rhine–Meuse–Scheldt delta, as the Scheldt ends in the same delta.
+[19] 5ad297dbd7d075001a429b2c Q: What did the ongoing Alpine orogeny cause before the Eocene?
+     own=Rhine_p25 cited=Rhine_p25
+     returned: From the Eocene onwards, the ongoing Alpine orogeny caused a N–S rift system to develop in this zone.
+[20] 5ad50bb95b96ef001a10aab2 Q: What is the full official city name of Miasto?
+     own=Warsaw_p4 cited=Warsaw_p4
+     returned: The official city name in full is miasto stołeczne Warszawa (English: "The Capital City of Warsaw").
+[21] 5ad2b3bcd7d075001a429fa5 Q: When was the first Roman war?
+     own=Rhine_p37 cited=Rhine_p39
+     returned: The mouths of the Rhine, in the county of Holland, fell to the Burgundian Netherlands in the 15th century; Holland remained contentious territory throughout the European wars of religion and the eventual collapse of the Holy Roman Empire, when the length of the Rhine fell to the First French Empire and its client states.
+[22] 5ad4bdbd5b96ef001a109eda Q: When did Warsaw become the capital of the Kingdom of Prussia?
+     own=Warsaw_p2 cited=Warsaw_p7
+     returned: Warsaw remained the capital of the Polish–Lithuanian Commonwealth until 1796, when it was annexed by the Kingdom of Prussia to become the capital of the province of South Prussia.
+[23] 5ad4d5e15b96ef001a10a299 Q: What only exists outside of jawed vertebrates?
+     own=Immune_system_p37 cited=Immune_system_p37
+     returned: Many of the classical molecules of the adaptive immune system (e.g., immunoglobulins and T cell receptors) exist only in jawed vertebrates.
+[24] 5a3e4c01378766001a00255d Q: In which magazine did Oppenheimer defend the consensus approach?
+     own=Intergovernmental_Panel_on_Climate_Change_p19 cited=Intergovernmental_Panel_on_Climate_Change_p19
+     returned: Michael Oppenheimer, a long-time participant in the IPCC and coordinating lead author of the Fifth Assessment Report conceded in Science Magazine's State of the Planet 2008-2009 some limitations of the IPCC consensus approach and asks for concurring, smaller assessments of special problems instead of the large scale approach as in the previous IPCC assessment reports.
+[25] 5acfa23577cf76001a685630 Q: Who is the founder of the Chicago Cubs and author of the first management accounting text book?
+     own=University_of_Chicago_p27 cited=University_of_Chicago_p27
+     returned: In business, notable alumni include Microsoft CEO Satya Nadella, Oracle Corporation founder and the third richest man in America Larry Ellison, Goldman Sachs and MF Global CEO as well as former Governor of New Jersey Jon Corzine, McKinsey & Company founder and author of the first management accounting textbook James O.
+[26] 5ad248e0d7d075001a428b86 Q: When did economists reach a conclusion without the S&P's rating agency?
+     own=Economic_inequality_p9 cited=Economic_inequality_p9
+     returned: In 2014, economists with the Standard & Poor's rating agency concluded that the widening disparity between the U.S.'s wealthiest citizens and the rest of the nation had slowed its recovery from the 2008-2009 recession and made it more prone to boom-and-bust cycles.
+[27] 5ad265d2d7d075001a4291c8 Q: Excessive bureaucratic red tape isn't one of the reasons for what type of ownership?
+     own=Economic_inequality_p36 cited=Economic_inequality_p36
+     returned: Reasons for extra-legal ownership include excessive bureaucratic red tape in buying property and building, In some countries it can take over 200 steps and up to 14 years to build on government land.
+[28] 5ad28a54d7d075001a4299a7 Q: What ends near the Millingen aan de Rijn?
+     own=Rhine_p19 cited=Rhine_p19
+     returned: The Rhine-Meuse Delta, the most important natural region of the Netherlands begins near Millingen aan de Rijn, close to the Dutch-German border with the division of the Rhine into Waal and Nederrijn.
+[29] 5ad4eb355b96ef001a10a64d Q: What rises during early slow-wave-sleep stage?
+     own=Immune_system_p46 cited=Immune_system_p46
+     returned: First, during the early slow-wave-sleep stage, a sudden drop in blood levels of cortisol, epinephrine, and norepinephrine induce increased blood levels of the hormones leptin, pituitary growth hormone, and prolactin.
+[30] 5ad26839d7d075001a42925a Q: What acts in no particular direction?
+     own=Force_p11 cited=Force_p11
+     returned: Forces act in a particular direction and have sizes dependent upon how strong the push or pull is.

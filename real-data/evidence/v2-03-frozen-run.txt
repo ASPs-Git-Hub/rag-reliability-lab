@@ -1,0 +1,215 @@
+split test: documents 621; questions 6247; answerable 3068; unanswerable 3179
+files in this run (first 16 hex of sha256):
+  ../src/rag.py: 5f4e935ba6039e06
+  ../src/rag2.py: 9e640c50933d5540
+  PROTOCOL-v2.md: 0c7a7e402422d9da
+  run_eval_v2.py: ab44e096c4bd0eaa
+  report_v2.py: 0e086a77058e1a1d
+v2 frozen gate threshold 0.5; retrieval {'k1': 0.9, 'b': 0.5, 'w_par': 0.6, 'w_type': 0.1}
+v1 done in 40s
+
+HEADLINE (same frozen questions, same scoring rule as PROTOCOL.md)
+v1 (RAG, before): answerable correct 1300/3068 = 42.4% (95% CI 40.6%-44.1%)
+v1 (RAG, before): answerable correct, looser (cited paragraph holds the answer) 1409/3068 = 45.9% (95% CI 44.2%-47.7%)
+v1 (RAG, before): answerable refused 1449/3068 = 47.2% (95% CI 45.5%-49.0%)
+v1 (RAG, before): unanswerable correctly refused 1879/3179 = 59.1% (95% CI 57.4%-60.8%)
+v1 (RAG, before): mean of the two rates (the pre-declared objective) 50.7%
+v2 (RAGv2, after): answerable correct 1029/3068 = 33.5% (95% CI 31.9%-35.2%)
+v2 (RAGv2, after): answerable correct, looser (cited paragraph holds the answer) 1085/3068 = 35.4% (95% CI 33.7%-37.1%)
+v2 (RAGv2, after): answerable refused 1932/3068 = 63.0% (95% CI 61.2%-64.7%)
+v2 (RAGv2, after): unanswerable correctly refused 2384/3179 = 75.0% (95% CI 73.5%-76.5%)
+v2 (RAGv2, after): mean of the two rates (the pre-declared objective) 54.3%
+CHECK v1 reproduces the frozen run in evidence/01-frozen-run.txt (1300 answerable correct, 1879 refused): 1300 and 1879 (only meaningful on the test split)
+
+PAIRED, answerable questions: both right 733; only v1 right 567; only v2 right 296; neither 1472
+PAIRED, unanswerable questions: both refuse 1625; only v1 refuses 254; only v2 refuses 759; neither 541
+
+ERROR CATEGORIES, before vs after (same questions; every question lands in exactly one row of its kind)
+category                                     v1 before  v2 after
+answerable: correct                               1300      1029
+answerable: refused_answerable                    1449      1932
+answerable: wrong_paragraph                        210        51
+answerable: right_paragraph_wrong_sentence         109        56
+unanswerable: correct_refusal                     1879      2384
+unanswerable: answered_from_own_paragraph         1100       743
+unanswerable: answered_from_other_paragraph        200        52
+  of v2 refusals of answerable: sentence right       n/a      1158
+  of v2 refusals of answerable: sentence wrong       n/a       774
+(v1 sums: answerable 3068, unanswerable 3179; v2 sums: answerable 3068, unanswerable 3179)
+
+RETRIEVAL ALONE (v2, never refusing): top sentence holds a gold answer for 2187/3068 = 71.3% (95% CI 69.7%-72.9%)
+
+TRADE-OFF CURVE of the frozen v2 scorer on these questions (threshold varied, NOT re-chosen; descriptive, not a second result)
+  thr=0.05: answerable correct 71.2% | unanswerable refused 1.0% | mean 36.1%
+  thr=0.10: answerable correct 71.0% | unanswerable refused 3.3% | mean 37.1%
+  thr=0.15: answerable correct 70.5% | unanswerable refused 7.6% | mean 39.1%
+  thr=0.20: answerable correct 69.4% | unanswerable refused 15.0% | mean 42.2%
+  thr=0.25: answerable correct 66.6% | unanswerable refused 26.4% | mean 46.5%
+  thr=0.30: answerable correct 62.5% | unanswerable refused 38.3% | mean 50.4%
+  thr=0.35: answerable correct 56.1% | unanswerable refused 50.6% | mean 53.4%
+  thr=0.40: answerable correct 49.1% | unanswerable refused 60.2% | mean 54.6%
+  thr=0.45: answerable correct 41.3% | unanswerable refused 68.7% | mean 55.0%
+  thr=0.50: answerable correct 33.5% | unanswerable refused 75.0% | mean 54.3%
+  thr=0.55: answerable correct 27.2% | unanswerable refused 81.0% | mean 54.1%
+  thr=0.60: answerable correct 21.0% | unanswerable refused 85.0% | mean 53.0%
+  thr=0.65: answerable correct 15.8% | unanswerable refused 89.1% | mean 52.4%
+  thr=0.70: answerable correct 9.9% | unanswerable refused 93.7% | mean 51.8%
+  thr=0.75: answerable correct 4.3% | unanswerable refused 97.6% | mean 50.9%
+  thr=0.80: answerable correct 1.2% | unanswerable refused 99.4% | mean 50.3%
+  thr=0.85: answerable correct 0.2% | unanswerable refused 100.0% | mean 50.1%
+  thr=0.90: answerable correct 0.0% | unanswerable refused 100.0% | mean 50.0%
+  thr=0.95: answerable correct 0.0% | unanswerable refused 100.0% | mean 50.0%
+  at least v1's refusal rate (59.1%), the best v2 threshold on this grid answers 49.1% correctly (v1: 42.4%)
+  at least v1's answerable rate (42.4%), the best v2 threshold on this grid refuses 60.2% of unanswerable (v1: 59.1%)
+
+--- answerable, v2 answered wrongly (wrong paragraph): 51; first 6
+  Q: When were the Normans in Normandy?
+    gold: ['10th and 11th centuries', 'in 10th and 11th centuries']
+    v2 sentence: 'Most Norman knights remained poor and land-hungry, and by 1066 Normandy had been exporting fighting horsemen for more than a generation.' cited=Normans_p6 p=0.60
+  Q: Who was the duke in the battle of Hastings?
+    gold: ['william conqueror']
+    v2 sentence: 'In 1066, Duke William II of Normandy conquered England killing King Harold II at the Battle of Hastings.' cited=Normans_p16 p=0.69
+  Q: What religion were the Normans
+    gold: ['catholic', 'catholic orthodoxy']
+    v2 sentence: 'The French Wars of Religion in the 16th century and French Revolution in the 18th successively destroyed much of what existed in the way of the architectural and artistic remnant o' cited=Normans_p34 p=0.57
+  Q: What was the Norman religion?
+    gold: ['catholicism']
+    v2 sentence: 'The French Wars of Religion in the 16th century and French Revolution in the 18th successively destroyed much of what existed in the way of the architectural and artistic remnant o' cited=Normans_p34 p=0.57
+  Q: What kind of problems are one of the main topics studied in computational complexity theory?
+    gold: ['decision', 'decision problems']
+    v2 sentence: 'In turn, imposing restrictions on the available resources is what distinguishes computational complexity from computability theory: the latter theory asks what kind of problems can' cited=Computational_complexity_theory_p2 p=0.51
+  Q: What are three examples of complexity classes associated with definitions established by probabilistic Turing machines?
+    gold: ['bpp zpp and rp']
+    v2 sentence: 'Many types of Turing machines are used to define complexity classes, such as deterministic Turing machines, probabilistic Turing machines, non-deterministic Turing machines, quantu' cited=Computational_complexity_theory_p14 p=0.59
+
+--- answerable, v2 refused though its sentence was right: 1158; first 6
+  Q: What century did the Normans first gain their separate identity?
+    gold: ['10th', '10th century']
+    v2 sentence: 'The distinct cultural and ethnic identity of the Normans emerged initially in the first half of the 10th century, and it continued to evolve over the succeeding centuries.' cited=Normans_p0 p=0.48
+  Q: What is the original meaning of the word Norman?
+    gold: ['norseman viking', 'viking']
+    v2 sentence: 'The English name "Normans" comes from the French words Normans/Normanz, plural of Normant, modern French normand, which is itself borrowed from Old Low Franconian Nortmann "Northma' cited=Normans_p2 p=0.37
+  Q: When was the Latin version of the word Norman first recorded?
+    gold: ['9th century']
+    v2 sentence: 'The English name "Normans" comes from the French words Normans/Normanz, plural of Normant, modern French normand, which is itself borrowed from Old Low Franconian Nortmann "Northma' cited=Normans_p2 p=0.49
+  Q: What river originally bounded the Duchy
+    gold: ['epte', 'seine']
+    v2 sentence: 'The area corresponded to the northern part of present-day Upper Normandy down to the river Seine, but the Duchy would eventually extend west beyond the Seine.' cited=Normans_p3 p=0.31
+  Q: What was one of the Norman's major exports?
+    gold: ['fighting horsemen']
+    v2 sentence: 'Most Norman knights remained poor and land-hungry, and by 1066 Normandy had been exporting fighting horsemen for more than a generation.' cited=Normans_p6 p=0.37
+  Q: Who was the Normans' main enemy in Italy, the Byzantine Empire and Armenia?
+    gold: ['pechenegs bulgars and especially seljuk turks', 'seljuk turks']
+    v2 sentence: 'Soon after the Normans began to enter Italy, they entered the Byzantine Empire and then Armenia, fighting against the Pechenegs, the Bulgars, and especially the Seljuk Turks.' cited=Normans_p7 p=0.45
+
+--- unanswerable, v2 answered (from own paragraph): 743; first 6
+  Q: Who did King Charles III swear fealty to?
+    gold: (unanswerable)
+    v2 sentence: 'They were descended from Norse ("Norman" comes from "Norseman") raiders and pirates from Denmark, Iceland and Norway who, under their leader Rollo, agreed to swear fealty to King C' cited=Normans_p0 p=0.75
+  Q: What type of major impact did the Norman dynasty have on modern Europe?
+    gold: (unanswerable)
+    v2 sentence: 'The Norman dynasty had a major political, cultural and military impact on medieval Europe and even the Near East.' cited=Normans_p1 p=0.57
+  Q: Who was famed for their Christian spirit?
+    gold: (unanswerable)
+    v2 sentence: 'The Normans were famed for their martial spirit and eventually for their Christian piety, becoming exponents of the Catholic orthodoxy into which they assimilated.' cited=Normans_p1 p=0.63
+  Q: What name comes from the English words Normans/Normanz?
+    gold: (unanswerable)
+    v2 sentence: 'The English name "Normans" comes from the French words Normans/Normanz, plural of Normant, modern French normand, which is itself borrowed from Old Low Franconian Nortmann "Northma' cited=Normans_p2 p=0.73
+  Q: What was replace with the Norse religion?
+    gold: (unanswerable)
+    v2 sentence: "The descendants of Rollo's Vikings and their Frankish wives would replace the Norse religion and Old Norse language with Catholicism (Christianity) and the Gallo-Romance language o" cited=Normans_p5 p=0.66
+  Q: Who entered Italy soon after the Byzantine Empire?
+    gold: (unanswerable)
+    v2 sentence: 'Soon after the Normans began to enter Italy, they entered the Byzantine Empire and then Armenia, fighting against the Pechenegs, the Bulgars, and especially the Seljuk Turks.' cited=Normans_p7 p=0.74
+
+SPOT CHECK SAMPLE (not yet read by hand): 30 of 795 unanswerable questions v2 answered
+[1] 5ad568d35b96ef001a10ae1d Q: What are four examples of problems believed to be NP=intermediate?
+     own=Computational_complexity_theory_p35 cited=Computational_complexity_theory_p35
+     returned: The graph isomorphism problem, the discrete logarithm problem and the integer factorization problem are examples of problems believed to be NP-intermediate.
+[2] 5ad0483977cf76001a686f8d Q: What includes Irvine Center Tech and Business Jamboree Parks?
+     own=Southern_California_p29 cited=Southern_California_p29
+     returned: West Irvine includes the Irvine Tech Center and Jamboree Business Parks.
+[3] 5a2c08aebfd06b001a5ae989 Q: What company was angry about the merger of Sky Television and British Satellite Broadcasting?
+     own=Sky__United_Kingdom__p0 cited=Sky__United_Kingdom__p0
+     returned: Formed in November 1990 by the equal merger of Sky Television and British Satellite Broadcasting, BSkyB became the UK's largest digital subscription television company.
+[4] 5a2c3ca9bfd06b001a5aea85 Q: What can BSkyB veto the presence of channels on?
+     own=Sky__United_Kingdom__p16 cited=Sky__United_Kingdom__p16
+     returned: BSkyB has no veto over the presence of channels on their EPG, with open access being an enforced part of their operating licence from Ofcom.
+[5] 5a551d87134fea001a0e1944 Q: What did Telecom Australia start? 
+     own=Packet_switching_p17 cited=Packet_switching_p17
+     returned: Started by Telecom Australia in the early 1980s, AUSTPAC was Australia's first public packet-switched data network, supporting applications such as on-line betting, financial applications — the Australian Tax Office made use of AUSTPAC — and remote terminal access to academic institutions, who maintained their connections to AUSTPAC up until the mid-late 1990s in some cases.
+[6] 5a551a65134fea001a0e191c Q: What was implemented with an X.25 interface? 
+     own=Packet_switching_p16 cited=Packet_switching_p16
+     returned: Some such as DATAPAC and TRANSPAC were initially implemented with an X.25 external interface.
+[7] 5ad0440877cf76001a686f3e Q: What are the two largest cities in the United States?
+     own=Southern_California_p23 cited=Southern_California_p23
+     returned: Los Angeles (at 3.7 million people) and San Diego (at 1.3 million people), both in southern California, are the two largest cities in all of California (and two of the eight largest cities in the United States).
+[8] 5ad54b035b96ef001a10ac53 Q: What are the least well known complexity resources?
+     own=Computational_complexity_theory_p18 cited=Computational_complexity_theory_p18
+     returned: Although time and space are the most well-known complexity resources, any complexity measure can be viewed as a computational resource.
+[9] 5a7b093b21c2de001afe9d0b Q: What is the Pacific Southwest Building currently known as?
+     own=Fresno__California_p6 cited=Fresno__California_p6
+     returned: Among them, the original Fresno County Courthouse (demolished), the Fresno Carnegie Public Library (demolished), the Fresno Water Tower, the Bank of Italy Building, the Pacific Southwest Building, the San Joaquin Light & Power Building (currently known as the Grand 1401), and the Hughes Hotel (burned down), to name a few.
+[10] 5ad3e8f6604f3c001a3ff66e Q: Who developed a successful steam engine for Charles Porter?
+     own=Steam_engine_p12 cited=Steam_engine_p12
+     returned: Early versions were in use by 1851, but the most successful indicator was developed for the high speed engine inventor and manufacturer Charles Porter by Charles Richard and exhibited at London Exhibition in 1862.
+[11] 5a7b0e2221c2de001afe9d14 Q: When did Fulton Street become the main financial district?
+     own=Fresno__California_p7 cited=Fresno__California_p7
+     returned: Fulton Street in Downtown Fresno was Fresno's main financial and commercial district before being converted into one of the nation's first pedestrian malls in 1964.
+[12] 5a66893ff038b7001ab0bf75 Q: What is a no contest plea the same as?
+     own=Civil_disobedience_p17 cited=Civil_disobedience_p17
+     returned: I therefore plead not guilty." A plea of no contest is sometimes regarded as a compromise between the two.
+[13] 5a5909b13e1742001a15cf4e Q: What behaviour causes rocks deeper in the earth to fault instead of folding?
+     own=Geology_p10 cited=Geology_p10
+     returned: Deeper in the Earth, rocks behave plastically, and fold instead of faulting.
+[14] 5a581adb770dc0001aeefff9 Q: What did Ibn Sina, who lived from 1031-1095 base his hypothesis for land formation on?
+     own=Geology_p21 cited=Geology_p21
+     returned: In China, the polymath Shen Kuo (1031–1095) formulated a hypothesis for the process of land formation: based on his observation of fossil animal shells in a geological stratum in a mountain hundreds of miles from the ocean, he inferred that the land was formed by erosion of the mountains and by deposition of silt.
+[15] 5a836273e60761001a2eb642 Q: What does the mesoglea terminate into?
+     own=Ctenophora_p9 cited=Ctenophora_p9
+     returned: These branch through the mesoglea to the most active parts of the animal: the mouth and pharynx; the roots of the tentacles, if present; all along the underside of each comb row; and four branches round the sensory complex at the far end from the mouth – two of these four branches terminate in anal pores.
+[16] 5ad0297e77cf76001a686c3b Q: What is around 18 miles south of San Jose?
+     own=Southern_California_p9 cited=Southern_California_p9
+     returned: Geographically, California's north-south midway point lies at exactly 37° 9' 58.23" latitude, around 11 miles (18 km) south of San Jose; however, this does not coincide with popular use of the term.
+[17] 5a2c31abbfd06b001a5aea34 Q: What are the Sky Q mini set top boxes never able to connect to?
+     own=Sky__United_Kingdom__p9 cited=Sky__United_Kingdom__p9
+     returned: The Sky Q Mini set top boxes connect to the Sky Q Silver set top boxes with a Wi-Fi or Power-line connection rather than receive their own satellite feeds.
+[18] 5ad153e9645df0001a2d1796 Q: What was maximum percent of alcohol content a German law requires all spirits and liqueurs to have?
+     own=European_Union_law_p31 cited=European_Union_law_p31
+     returned: In the most famous case Rewe-Zentral AG v Bundesmonopol für Branntwein, the Court of Justice found that a German law requiring all spirits and liqueurs (not just imported ones) to have a minimum alcohol content of 25 per cent was contrary to TFEU article 34, because it had a greater negative effect on imports.
+[19] 5a6790dbf038b7001ab0c2d0 Q: Where is St. Gregory's College located?
+     own=Private_school_p5 cited=Private_school_p5
+     returned: St Joseph's College, Gregory Terrace, Saint Ignatius' College, Riverview, St Gregory's College, Campbelltown, St Aloysius' College (Sydney) and St Joseph's College, Hunters Hill, as well as Loreto Kirribilli, Monte Sant Angelo Mercy College, St Ursula's College and Loreto Normanhurst for girls.
+[20] 5a2c36c4bfd06b001a5aea69 Q: What is the localized band that digital receivers will receive to air channels on?
+     own=Sky__United_Kingdom__p14 cited=Sky__United_Kingdom__p14
+     returned: Provided is a universal Ku band LNB (9.75/10.600 GHz) which is fitted at the end of the dish and pointed at the correct satellite constellation; most digital receivers will receive the free to air channels.
+[21] 5ad254a5d7d075001a428d24 Q: Who measures oxygen-18 and oxygen-16 in skeletons of all organisms?
+     own=Oxygen_p22 cited=Oxygen_p22
+     returned: Paleoclimatologists measure the ratio of oxygen-18 and oxygen-16 in the shells and skeletons of marine organisms to determine what the climate was like millions of years ago (see oxygen isotope ratio cycle).
+[22] 5a2ecbe9a83784001a7d2498 Q: In what year were the Black Death victims in East Smithfield discovered?
+     own=Black_Death_p12 cited=Black_Death_p12
+     returned: Based on genetic evidence derived from Black Death victims in the East Smithfield burial site in England, Schuenemann et al.
+[23] 5a0c99fcf5590b0018dab4a5 Q: The Amazon releases how much carbon dioxide each year?
+     own=Amazon_rainforest_p20 cited=Amazon_rainforest_p20
+     returned: In a typical year the Amazon absorbs 1.5 gigatons of carbon dioxide; during 2005 instead 5 gigatons were released and in 2010 8 gigatons were released.
+[24] 5a2c31abbfd06b001a5aea36 Q: What set top box can no longer display UHD broadcasts?
+     own=Sky__United_Kingdom__p9 cited=Sky__United_Kingdom__p9
+     returned: The Sky Q Silver set top box is capable of receiving and displaying UHD broadcasts, which Sky will introduce later in 2016.
+[25] 5ad24b13d7d075001a428bcf Q: Why do animals use O2 for biological respiration?
+     own=Oxygen_p15 cited=Oxygen_p15
+     returned: Due to its energy content, O2 is used by complex forms of life, such as animals, in cellular respiration (see Biological role).
+[26] 5ad25553d7d075001a428d37 Q: What does the Earth have a higher proportion of oxygen-16 than?
+     own=Oxygen_p20 cited=Oxygen_p20
+     returned: Analysis of a silicon wafer exposed to the solar wind in space and returned by the crashed Genesis spacecraft has shown that the Sun has a higher proportion of oxygen-16 than does the Earth.
+[27] 5ad153e9645df0001a2d1799 Q: What did the Court of Justice justify about a low content of vegetable fat?
+     own=European_Union_law_p31 cited=European_Union_law_p31
+     returned: The Court of Justice held that a low content of vegetable fat did not justify a "chocolate substitute" label.
+[28] 5a66978af038b7001ab0c029 Q: What kind of press coverage is there when defendants plead not guilty?
+     own=Civil_disobedience_p22 cited=Civil_disobedience_p22
+     returned: Steven Barkan writes that if defendants plead not guilty, "they must decide whether their primary goal will be to win an acquittal and avoid imprisonment or a fine, or to use the proceedings as a forum to inform the jury and the public of the political circumstances surrounding the case and their reasons for breaking the law via civil disobedience." A technical defense may enhance the chances for acquittal but make for more boring proceedings and reduced press coverage.
+[29] 5ad25b1cd7d075001a428e66 Q: What evolved 5.3 billion years ago?
+     own=Oxygen_p28 cited=Oxygen_p28
+     returned: Free oxygen gas was almost nonexistent in Earth's atmosphere before photosynthetic archaea and bacteria evolved, probably about 3.5 billion years ago.
+[30] 5ad153e9645df0001a2d1798 Q: Who accepted the German government's arguments that the measure proportional protected public health?
+     own=European_Union_law_p31 cited=European_Union_law_p31
+     returned: The Court of Justice rejected the German government's arguments that the measure proportionately protected public health under TFEU article 36, because stronger beverages were available and adequate labelling would be enough for consumers to understand what they bought.

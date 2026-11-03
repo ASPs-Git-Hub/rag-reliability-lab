@@ -1,0 +1,43 @@
+M01 KILLED   rag.py: answerability gate removed
+M02 KILLED   rag.py: similarity threshold removed
+M03 KILLED   rag.py: title boost removed
+M04 KILLED   rag.py: overlapping sliding windows
+M05 KILLED   rag.py: trailing dots no longer stripped
+M06 KILLED   rag.py: empty-corpus guard removed
+M07 KILLED   rag.py: window validation removed
+M08 KILLED   rag.py: generic question words kept
+M09 KILLED   evaluate.py: negation guard removed
+M10 KILLED   doctor.py: comments no longer stripped
+M11 KILLED   doctor.py: write-mode opens treated as inputs
+M12 KILLED   doctor.py: loose pins not reported
+M13 KILLED   doctor.py: front matter sdk check removed
+M14 KILLED   doctor.py: app_file existence check removed
+M15 KILLED   doctor.py: host check removed
+M16 KILLED   doctor.py: port check removed
+M17 KILLED   doctor.py: secret check removed
+M18 KILLED   doctor.py: Colab check removed
+M19 KILLED   doctor.py: missing-file check removed
+M20 KILLED   rag2.py: v2: plural y-rule removed
+M21 KILLED   rag2.py: v2: -ing rule removed
+M22 KILLED   rag2.py: v2: stop words not removed
+M23 KILLED   rag2.py: v2: type bonus removed
+M24 KILLED   rag2.py: v2: paragraph context removed
+M25 KILLED   rag2.py: v2: title boost removed
+M26 KILLED   rag2.py: v2: unseen words count as zero idf
+M27 KILLED   rag2.py: v2: margin always zero
+M28 KILLED   rag2.py: v2: missing-name feature removed
+M29 KILLED   rag2.py: v2: missing-number feature removed
+M30 KILLED   rag2.py: v2: missing-type feature removed
+M31 KILLED   rag2.py: v2: abstain rule removed
+M32 KILLED   rag2.py: v2: sentence word-pair feature removed
+M33 KILLED   rag2.py: v2: compactness feature removed
+M34 KILLED   rag2.py: v2: rare-miss feature removed
+M35 KILLED   rag2.py: v2: number evidence always true
+M36 KILLED   rag2.py: v2: month names not evidence of a date
+M37 KILLED   rag2.py: v2: question words allowed as names
+M38 KILLED   rag2.py: v2: first word of question counted as a name
+M39 KILLED   rag2.py: v2: sentence coverage reads the paragraph
+M40 KILLED   rag2.py: v2: standardisation ignores the mean
+M41 KILLED   rag2.py: v2: sentence ties no longer broken by order
+restored baseline passes: True
+41 of 41 mutations killed

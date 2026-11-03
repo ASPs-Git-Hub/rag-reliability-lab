@@ -1,0 +1,13 @@
+Feature-set comparison on the TUNING split only, 2-fold cross-validation by article (logistic regression), then boosted stumps.
+base10                       best mean 0.563  ac@ur60 0.470  ac@ur70 0.388 ac@ur80 0.304
+all18                        best mean 0.573  ac@ur60 0.484  ac@ur70 0.424 ac@ur80 0.328
+base10+n_terms               best mean 0.569  ac@ur60 0.477  ac@ur70 0.410 ac@ur80 0.326
+base10+miss_par_cnt          best mean 0.571  ac@ur60 0.470  ac@ur70 0.407 ac@ur80 0.324
+base10+num_miss              best mean 0.564  ac@ur60 0.482  ac@ur70 0.386 ac@ur80 0.318
+base10+ent_miss_sent         best mean 0.562  ac@ur60 0.474  ac@ur70 0.390 ac@ur80 0.306
+base10+compact               best mean 0.561  ac@ur60 0.465  ac@ur70 0.385 ac@ur80 0.301
+base10+matched_rare          best mean 0.563  ac@ur60 0.468  ac@ur70 0.394 ac@ur80 0.307
+base10+miss_sent_rare        best mean 0.565  ac@ur60 0.480  ac@ur70 0.397 ac@ur80 0.319
+base10+cov_sent_sq           best mean 0.564  ac@ur60 0.471  ac@ur70 0.392 ac@ur80 0.313
+stumps r=100 lr=0.15: best mean 0.566 ac@ur60 0.478 ac@ur70 0.419 ac@ur80 0.318 (1s)
+stumps r=250 lr=0.1: best mean 0.563 ac@ur60 0.480 ac@ur70 0.404 ac@ur80 0.324 (3s)

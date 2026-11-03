@@ -1,0 +1,214 @@
+documents 621; questions 6247; answerable 3068; unanswerable 3179
+FROZEN RUN, defaults unchanged (threshold 0.30, window 3, min_coverage 0.5)
+fixed RAG: answerable correct (headline) 1300/3068 = 42.4% (95% CI 40.6%-44.1%)
+fixed RAG: answerable correct (looser, cited paragraph) 1409/3068 = 45.9% (95% CI 44.2%-47.7%)
+fixed RAG: answerable refused 1449/3068 = 47.2% (95% CI 45.5%-49.0%)
+fixed RAG: unanswerable correctly refused 1879/3179 = 59.1% (95% CI 57.4%-60.8%)
+  fixed done in 32s
+BrokenRAG: answerable correct (headline) 585/3068 = 19.1% (95% CI 17.7%-20.5%)
+BrokenRAG: answerable correct (looser, cited paragraph) 585/3068 = 19.1% (95% CI 17.7%-20.5%)
+BrokenRAG: answerable refused 0/3068 = 0.0% (95% CI 0.0%-0.1%)
+BrokenRAG: unanswerable correctly refused 0/3179 = 0.0% (95% CI 0.0%-0.1%)
+  broken done in 86s
+
+FAILURE CATEGORIES (fixed RAG)
+refused_low_score: 1256
+refused_low_coverage: 193
+wrong_paragraph: 210
+right_paragraph_wrong_sentence: 109
+answered_from_own_paragraph: 1100
+answered_from_other_paragraph: 200
+
+--- refused_low_score: first 5 examples
+  Q: In what country is Normandy located?
+    gold: ['france']
+    got: 'I could not find that in the FAQ.' cited=None score=0.25 cov=0.33
+  Q: From which countries did the Norse originate?
+    gold: ['denmark iceland and norway']
+    got: 'I could not find that in the FAQ.' cited=None score=0.23 cov=0.25
+  Q: Who was the Norse leader?
+    gold: ['rollo']
+    got: 'I could not find that in the FAQ.' cited=None score=0.30 cov=0.67
+  Q: Who was the duke in the battle of Hastings?
+    gold: ['william conqueror']
+    got: 'I could not find that in the FAQ.' cited=None score=0.27 cov=0.75
+  Q: Who ruled the duchy of Normandy
+    gold: ['richard i']
+    got: 'I could not find that in the FAQ.' cited=None score=0.23 cov=0.33
+
+--- refused_low_coverage: first 5 examples
+  Q: What river originally bounded the Duchy
+    gold: ['epte', 'seine']
+    got: 'I could not find that in the FAQ.' cited=None score=0.38 cov=0.25
+  Q: What river was Petrela located by?
+    gold: ['deabolis', 'river deabolis']
+    got: 'I could not find that in the FAQ.' cited=None score=0.41 cov=0.25
+  Q: Who was Richard's fiancee?
+    gold: ['berengaria']
+    got: 'I could not find that in the FAQ.' cited=None score=0.30 cov=0.25
+  Q: What kind of needlework was used in the creation of the Bayeux Tapestry?
+    gold: ['embroidery']
+    got: 'I could not find that in the FAQ.' cited=None score=0.36 cov=0.43
+  Q: What are two basic primary resources used to guage complexity?
+    gold: ['time and storage']
+    got: 'I could not find that in the FAQ.' cited=None score=0.33 cov=0.43
+
+--- wrong_paragraph: first 5 examples
+  Q: When were the Normans in Normandy?
+    gold: ['10th and 11th centuries', 'in 10th and 11th centuries']
+    got: 'Because of this, Ethelred fled to Normandy in 1013, when he was forced from his kingdom by Sweyn Forkbeard. His stay in Normandy (until 1016) influenced him and his sons by Emma, who stayed in Normand' cited=Normans_p14 score=0.42 cov=0.67
+  Q: What religion were the Normans
+    gold: ['catholic', 'catholic orthodoxy']
+    got: 'There is debate whether the Normans in Greek service actually were from Norman Italy, and it now seems likely only a few came from there. It is also unknown how many of the "Franks", as the Byzantines' cited=Normans_p7 score=0.37 cov=0.67
+  Q: What was the Norman religion?
+    gold: ['catholicism']
+    got: 'The French Wars of Religion in the 16th century and French Revolution in the 18th successively destroyed much of what existed in the way of the architectural and artistic remnant of this Norman creati' cited=Normans_p34 score=0.37 cov=0.67
+  Q: What was the name of the Norman castle?
+    gold: ['afranji']
+    got: 'Another common Norman-Irish name was Morell (Murrell) derived from the French Norman name Morel. Other Norman names such as Furlong predominate there.' cited=Normans_p18 score=0.47 cov=0.75
+  Q: When did Dyrrachium  fall to the Normans?
+    gold: ['1082', 'february 1082']
+    got: 'The further decline of Byzantine state-of-affairs paved the road to a third attack in 1185, when a large Norman army invaded Dyrrachium, owing to the betrayal of high Byzantine officials. Some time la' cited=Normans_p13 score=0.32 cov=0.50
+
+--- right_paragraph_wrong_sentence: first 5 examples
+  Q: What was the Anglo-Norman language's final form?
+    gold: ['modern english']
+    got: 'The Anglo-Norman language was eventually absorbed into the Anglo-Saxon language of their subjects (see Old English) and influenced it, helping (along with the Norse language of the earlier Anglo-Norse' cited=Normans_p17 score=0.48 cov=0.57
+  Q: What culture did the Normans combine with in Ireland?
+    gold: ['irish']
+    got: "Names such as French, (De) Roche, Devereux, D'Arcy, Treacy and Lacy are particularly common in the southeast of Ireland, especially in the southern part of County Wexford where the first Norman settle" cited=Normans_p18 score=0.32 cov=0.60
+  Q: Who made Ralph earl?
+    gold: ['edward confessor']
+    got: 'He appointed Robert of Jumièges archbishop of Canterbury and made Ralph the Timid earl of Hereford. He invited his brother-in-law Eustace II, Count of Boulogne to his court in 1051, an event which res' cited=Normans_p15 score=0.33 cov=1.00
+  Q: What is the term for the set of all connected graphs related to this decision problem?
+    gold: ['formal language', 'formal language associated with this decision problem']
+    got: 'The problem consists in deciding whether the given graph is connected, or not. An example of a decision problem is the following.' cited=Computational_complexity_theory_p7 score=0.42 cov=0.50
+  Q: What is typically used to broadly define complexity measures?
+    gold: ['blum complexity axioms']
+    got: 'Other complexity measures used in complexity theory include communication complexity, circuit complexity, and decision tree complexity.' cited=Computational_complexity_theory_p18 score=0.38 cov=0.50
+
+--- answered_from_own_paragraph: first 5 examples
+  Q: Who did King Charles III swear fealty to?
+    gold: (unanswerable)
+    got: 'They were descended from Norse ("Norman" comes from "Norseman") raiders and pirates from Denmark, Iceland and Norway who, under their leader Rollo, agreed to swear fealty to King Charles III of West F' cited=Normans_p0 score=0.30 cov=0.83
+  Q: What type of major impact did the Norman dynasty have on modern Europe?
+    gold: (unanswerable)
+    got: 'The Norman dynasty had a major political, cultural and military impact on medieval Europe and even the Near East. The Normans were famed for their martial spirit and eventually for their Christian pie' cited=Normans_p1 score=0.31 cov=0.62
+  Q: What name comes from the English words Normans/Normanz?
+    gold: (unanswerable)
+    got: 'The English name "Normans" comes from the French words Normans/Normanz, plural of Normant, modern French normand, which is itself borrowed from Old Low Franconian Nortmann "Northman" or directly from ' cited=Normans_p2 score=0.38 cov=1.00
+  Q: What was replace with the Norse religion?
+    gold: (unanswerable)
+    got: "The descendants of Rollo's Vikings and their Frankish wives would replace the Norse religion and Old Norse language with Catholicism (Christianity) and the Gallo-Romance language of the local people, " cited=Normans_p5 score=0.38 cov=1.00
+  Q: What did maternal Old Norse traditions merge with?
+    gold: (unanswerable)
+    got: "The descendants of Rollo's Vikings and their Frankish wives would replace the Norse religion and Old Norse language with Catholicism (Christianity) and the Gallo-Romance language of the local people, " cited=Normans_p5 score=0.35 cov=0.67
+
+--- answered_from_other_paragraph: first 5 examples
+  Q: Where were several Norman mercenary familes originate from?
+    gold: (unanswerable)
+    got: 'By then however, there were already Norman mercenaries serving as far away as Trebizond and Georgia. One of the first Norman mercenaries to serve as a Byzantine general was Hervé in the 1050s.' cited=Normans_p8 score=0.34 cov=0.50
+  Q: Who did the Normans serve under in the 10th century?
+    gold: (unanswerable)
+    got: 'The distinct cultural and ethnic identity of the Normans emerged initially in the first half of the 10th century, and it continued to evolve over the succeeding centuries.' cited=Normans_p0 score=0.34 cov=0.50
+  Q: What fell to the Normans in the 10th century?
+    gold: (unanswerable)
+    got: 'The distinct cultural and ethnic identity of the Normans emerged initially in the first half of the 10th century, and it continued to evolve over the succeeding centuries.' cited=Normans_p0 score=0.39 cov=0.75
+  Q: What did the Normans take part in in the 10th century?
+    gold: (unanswerable)
+    got: 'The distinct cultural and ethnic identity of the Normans emerged initially in the first half of the 10th century, and it continued to evolve over the succeeding centuries.' cited=Normans_p0 score=0.36 cov=0.60
+  Q: What revolution was fought in the 1899's?
+    gold: (unanswerable)
+    got: 'One of its earliest massive implementations was brought about by Egyptians against the British occupation in the 1919 Revolution. It has been used in many nonviolent resistance movements in India (Gan' cited=Civil_disobedience_p0 score=0.31 cov=0.60
+
+SPOT CHECK SAMPLE: 30 of 1300 unanswerable questions that fixed RAG answered
+[1] 5ad0228a77cf76001a686b59 Q: What is the desert of southern California popular for?
+     own=Southern_California_p8 cited=Southern_California_p8
+     returned: Many locals and tourists frequent the southern California coast for its popular beaches, and the desert city of Palm Springs is popular for its resort feel and nearby open spaces.
+[2] 5a2c0fb8bfd06b001a5ae9bb Q: Within 30 days how many digiboxes had been discarded?
+     own=Sky__United_Kingdom__p17 cited=Sky__United_Kingdom__p17
+     returned: Within 30 days, over 100,000 digiboxes had been sold, which help bolstered BSkyB's decision to give away free digiboxes and minidishes from May 1999.
+[3] 5a638e4468151a001a92237b Q: What percentage of Australia's veal is comes from Victoria?
+     own=Victoria__Australia__p18 cited=Victoria__Australia__p5
+     returned: Victoria is Australia's most densely populated state and its second-most populous state overall. Victoria (abbreviated as Vic) is a state in the south-east of Australia.
+[4] 5a6398fd7f3c80001a150aef Q: What is the gauge of the Victorian power lines?
+     own=Victoria__Australia__p19 cited=Victoria__Australia__p19
+     returned: Victorian lines mainly use the 1,600 mm (5 ft 3 in) broad gauge. However, the interstate trunk routes, as well as a number of branch lines in the west of the state have been converted to 1,435 mm (4 ft 8 1⁄2 in) standard gauge.
+[5] 5ad3bd8f604f3c001a3fef2f Q: In the Rankine cycle, what does nuclear power turn into when heated?
+     own=Steam_engine_p0 cited=Steam_engine_p23
+     returned: In the 1990s, Rankine steam cycles generated about 90% of all electric power used throughout the world, including virtually all solar, biomass, coal and nuclear power plants. The Rankine cycle is used in virtually all steam power production applications.
+[6] 5a67a2c7f038b7001ab0c3a4 Q: How much of the student population went to private schools in 1984?
+     own=Private_school_p14 cited=Private_school_p14
+     returned: As of April 2014, there are 88 private schools in New Zealand, catering for around 28,000 students or 3.7% of the entire student population. Private school numbers have been in decline since the mid-1970s as a result of many private schools opting to become state-integrated schools, mostly due of financial difficulties stemming from changes in student numbers and/or the economy.
+[7] 5a679cc7f038b7001ab0c345 Q: What do government schools have to do to be able to teach English?
+     own=Private_school_p10 cited=Private_school_p10
+     returned: While official data does not capture the real extent of private schooling in the country, various studies have reported unpopularity of government schools and an increasing number of private schools. A key difference between the government and private schools is that the medium of education in private schools is English while it is the local language in government schools.
+[8] 5a2c31abbfd06b001a5aea33 Q: What is the name of Sky Q's dial-up router?
+     own=Sky__United_Kingdom__p9 cited=Sky__United_Kingdom__p9
+     returned: The Sky Q range consists of three set top boxes (Sky Q, Sky Q Silver and Sky Q Mini), a broadband router (Sky Q Hub) and mobile applications. On 18 November 2015, Sky announced Sky Q, a range of products and services to be available in 2016.
+[9] 5ad5632f5b96ef001a10ad6c Q: What are many complexity classes not defined by?
+     own=Computational_complexity_theory_p29 cited=Computational_complexity_theory_p25
+     returned: Many important complexity classes can be defined by bounding the time or space used by the algorithm. Some important complexity classes of decision problems defined in this manner are the following:
+[10] 5a5915043e1742001a15cf6b Q: How long have the intrusive rocks in the southwestern US been around?
+     own=Geology_p13 cited=Geology_p13
+     returned: In the southwestern United States, sedimentary, volcanic, and intrusive rocks have been metamorphosed, faulted, foliated, and folded. Even older rocks, such as the Acasta gneiss of the Slave craton in northwestern Canada, the oldest known rock in the world have been metamorphosed to the point where their origin is undiscernable without laboratory analysis.
+[11] 5ad2678ad7d075001a42922c Q: What do rapid concentrated sources of oxygen promote?
+     own=Oxygen_p5 cited=Oxygen_p5
+     returned: Highly concentrated sources of oxygen promote rapid combustion. Oxygen is the oxidant, not the fuel, but nevertheless the source of most of the chemical energy released in combustion.
+[12] 5a5915cd3e1742001a15cf74 Q: What do Geologists use to study processes outside of the earth?
+     own=Geology_p14 cited=Geology_p14
+     returned: Geologists use a number of field, laboratory, and numerical modeling methods to decipher Earth history and understand the processes that occur on and inside the Earth. In typical geological investigations, geologists use primary information related to petrology (the study of rocks), stratigraphy (the study of sedimentary layers), and structural geology (the study of positions of rock units and their deformation).
+[13] 5a57cc97770dc0001aeefd87 Q: What happened as a result of hydrothermal vents and underwater volcanoes that are transform boundaries?
+     own=Geology_p2 cited=Geology_p2
+     returned: Mid-ocean ridges, high regions on the seafloor where hydrothermal vents and volcanoes exist, were explained as divergent boundaries, where two plates move apart. Long linear regions of geologic features could be explained as plate boundaries.
+[14] 5ad04de377cf76001a686fa6 Q: What is home to Southern California?
+     own=Southern_California_p33 cited=Southern_California_p0
+     returned: Southern California is a major economic center for the state of California and the United States.
+[15] 5ad25963d7d075001a428e0c Q: How many Huguenots were part of the group that founded France Antarctique in 1555?
+     own=Huguenot_p20 cited=Huguenot_p20
+     returned: The first Huguenots to leave France sought freedom from persecution in Switzerland and the Netherlands.[citation needed] A group of Huguenots was part of the French colonisers who arrived in Brazil in 1555 to found France Antarctique.
+[16] 5a550f98134fea001a0e189e Q: X.25 had a simpler what?
+     own=Packet_switching_p8 cited=Packet_switching_p8
+     returned: This results in a simpler host interface with less functionality than in the datagram model. The X.25 protocol suite uses this network type.
+[17] 5ad24600d7d075001a428acc Q: How many Huguenots were slain in Toulouse?
+     own=Huguenot_p36 cited=Huguenot_p36
+     returned: The main provincial towns and cities experiencing the Massacre were Aix, Bordeaux, Bourges, Lyons, Meaux, Orleans, Rouen, Toulouse, and Troyes. Nearly 3,000 Protestants were slaughtered in Toulouse alone.
+[18] 5ad10f94645df0001a2d0bc7 Q: Where does the European Union law not apply?
+     own=European_Union_law_p3 cited=European_Union_law_p1
+     returned: The European Court of Justice is the highest court able to interpret European Union law. Supplementary sources of European Union law include case law by the Court of Justice, international law and general principles of European Union law.
+[19] 5a2ed136a83784001a7d24dd Q: How many people died from the Black Death in Northern  Africa?
+     own=Black_Death_p18 cited=Black_Death_p17
+     returned: The Black Death killed about 40% of Egypt's population. Half of Paris's population of 100,000 people died.
+[20] 5ad25963d7d075001a428e0d Q: In what year was Fort Coligny built?
+     own=Huguenot_p20 cited=Huguenot_p20
+     returned: A fort, named Fort Coligny, was built to protect them from attack from the Portuguese troops and Brazilian Native Americans. The first Huguenots to leave France sought freedom from persecution in Switzerland and the Netherlands.[citation needed] A group of Huguenots was part of the French colonisers who arrived in Brazil in 1555 to found France Antarctique.
+[21] 5a38bf63a4b263001a8c18f7 Q: What was imposed on November 28 1995 by the Emergency Highway Energy Conservation Act?
+     own=1973_oil_crisis_p13 cited=1973_oil_crisis_p13
+     returned: To help reduce consumption, in 1974 a national maximum speed limit of 55 mph (about 88 km/h) was imposed through the Emergency Highway Energy Conservation Act. Development of the Strategic Petroleum Reserve began in 1975, and in 1977 the cabinet-level Department of Energy was created, followed by the National Energy Act of 1978.[citation needed] On November 28, 1995, Bill Clinton signed the National Highway Designation Act, ending the federal 55 mph (89 km/h) speed limit, allowing states to restore their prior maximum speed limit.
+[22] 5ad10e0f645df0001a2d0b72 Q: Who applies American Union law?
+     own=European_Union_law_p1 cited=European_Union_law_p0
+     returned: European Union law is a body of treaties and legislation, such as Regulations and Directives, which have direct effect or indirect effect on the laws of European Union member states. The three sources of European Union law are primary law, secondary law and supplementary law.
+[23] 5a6688fcf038b7001ab0bf6f Q: In a virtual call system, the hosts have what responsibility?
+     own=Packet_switching_p8 cited=Packet_switching_p8
+     returned: In the datagram system, the hosts have the responsibility to ensure orderly delivery of packets. In the virtual call system, the network guarantees sequenced delivery of data to the host.
+[24] 5ad141e1645df0001a2d1405 Q: What happens if a Directive doe snot give expression to a "general principle"of EU law?
+     own=European_Union_law_p16 cited=European_Union_law_p12
+     returned: In the United Kingdom, the basic principle is that Parliament, as the sovereign expression of democratic legitimacy, can decide whether it wishes to expressly legislate against EU law. Generally speaking, while all member states recognise that EU law takes primacy over national law where this agreed in the Treaties, they do not accept that the Court of Justice has the final say on foundational constitutional questions affecting democracy and human rights.
+[25] 5a550f98134fea001a0e189f Q: X.25 had less functionality because of what?
+     own=Packet_switching_p8 cited=Packet_switching_p8
+     returned: This results in a simpler host interface with less functionality than in the datagram model. The X.25 protocol suite uses this network type.
+[26] 5ad3d689604f3c001a3ff30d Q: What is the usual source of heat for boiling water in the industrial process?
+     own=Steam_engine_p11 cited=Steam_engine_p11
+     returned: The heat required for boiling the water and supplying the steam can be derived from various sources, most commonly from burning combustible materials with an appropriate supply of air in a closed space (called variously combustion chamber, firebox). In some cases the heat source is a nuclear reactor, geothermal energy, solar energy or waste heat from an internal combustion engine or industrial process.
+[27] 5ad419f8604f3c001a40049b Q: How much temperature is consumed by the pump while the work fluid is condensed?
+     own=Steam_engine_p41 cited=Steam_engine_p41
+     returned: By condensing the fluid, the work required by the pump consumes only 1% to 3% of the turbine power and contributes to a much higher efficiency for a real cycle. One of the principal advantages the Rankine cycle holds over others is that during the compression stage relatively little work is required to drive the pump, the working fluid being in its liquid phase at this point.
+[28] 5ad04ecf77cf76001a686fb0 Q: How many State of California University campuses are there?
+     own=Southern_California_p34 cited=Southern_California_p34
+     returned: Amongst these include 5 University of California campuses (Irvine, Los Angeles, Riverside, Santa Barbara, and San Diego); 12 California State University campuses (Bakersfield, Channel Islands, Dominguez Hills, Fullerton, Los Angeles, Long Beach, Northridge, Pomona, San Bernardino, San Diego, San Marcos, and San Luis Obispo); and private institutions such as the California Institute of Technology, Chapman University, the Claremont Colleges (Claremont McKenna College, Harvey Mudd College, Pitzer College, Pomona College, and Scripps College), Loma Linda University, Loyola Marymount University, Occidental College, Pepperdine University, University of Redlands, University of San Diego, and the University of Southern California. The Tech Coast is a moniker that has gained use as a descriptor for the region's diversified technology and industrial base as well as its multitude of prestigious and world-renowned research universities and other public and private institutions.
+[29] 5ad53e615b96ef001a10abdd Q: What are other irrelevant examples of a function problem>
+     own=Computational_complexity_theory_p8 cited=Computational_complexity_theory_p8
+     returned: A function problem is a computational problem where a single output (of a total function) is expected for every input, but the output is more complex than that of a decision problem, that is, it isn't just yes or no. Notable examples include the traveling salesman problem and the integer factorization problem.
+[30] 5ad56d3e5b96ef001a10ae88 Q: What is known about the complexity between L and P that prevents determining the value between L and P?
+     own=Computational_complexity_theory_p40 cited=Computational_complexity_theory_p40
+     returned: Similarly, it is not known if L (the set of all problems that can be solved in logarithmic space) is strictly contained in P or equal to P. Again, there are many complexity classes between the two, such as NL and NC, and it is not known if they are distinct or equal classes.

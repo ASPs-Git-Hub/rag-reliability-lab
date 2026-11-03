@@ -1,0 +1,118 @@
+split tune: documents 583; questions 5626; answerable 2860; unanswerable 2766
+RETRIEVAL GRID (forced to answer, answerable questions only; top-1 sentence contains a gold answer)
+  {'k1': 0.9, 'b': 0.5, 'w_par': 0.0, 'w_type': 0.0} -> 2047/2860 = 71.6%
+  {'k1': 0.9, 'b': 0.5, 'w_par': 0.0, 'w_type': 0.1} -> 2070/2860 = 72.4%
+  {'k1': 0.9, 'b': 0.5, 'w_par': 0.0, 'w_type': 0.2} -> 2048/2860 = 71.6%
+  {'k1': 0.9, 'b': 0.5, 'w_par': 0.3, 'w_type': 0.0} -> 2089/2860 = 73.0%
+  {'k1': 0.9, 'b': 0.5, 'w_par': 0.3, 'w_type': 0.1} -> 2110/2860 = 73.8%
+  {'k1': 0.9, 'b': 0.5, 'w_par': 0.3, 'w_type': 0.2} -> 2098/2860 = 73.4%
+  {'k1': 0.9, 'b': 0.5, 'w_par': 0.6, 'w_type': 0.0} -> 2102/2860 = 73.5%
+  {'k1': 0.9, 'b': 0.5, 'w_par': 0.6, 'w_type': 0.1} -> 2125/2860 = 74.3%
+  {'k1': 0.9, 'b': 0.5, 'w_par': 0.6, 'w_type': 0.2} -> 2111/2860 = 73.8%
+  {'k1': 0.9, 'b': 0.5, 'w_par': 1.0, 'w_type': 0.0} -> 2100/2860 = 73.4%
+  {'k1': 0.9, 'b': 0.5, 'w_par': 1.0, 'w_type': 0.1} -> 2124/2860 = 74.3%
+  {'k1': 0.9, 'b': 0.5, 'w_par': 1.0, 'w_type': 0.2} -> 2115/2860 = 74.0%
+  {'k1': 0.9, 'b': 0.75, 'w_par': 0.0, 'w_type': 0.0} -> 2010/2860 = 70.3%
+  {'k1': 0.9, 'b': 0.75, 'w_par': 0.0, 'w_type': 0.1} -> 2039/2860 = 71.3%
+  {'k1': 0.9, 'b': 0.75, 'w_par': 0.0, 'w_type': 0.2} -> 2020/2860 = 70.6%
+  {'k1': 0.9, 'b': 0.75, 'w_par': 0.3, 'w_type': 0.0} -> 2058/2860 = 72.0%
+  {'k1': 0.9, 'b': 0.75, 'w_par': 0.3, 'w_type': 0.1} -> 2088/2860 = 73.0%
+  {'k1': 0.9, 'b': 0.75, 'w_par': 0.3, 'w_type': 0.2} -> 2079/2860 = 72.7%
+  {'k1': 0.9, 'b': 0.75, 'w_par': 0.6, 'w_type': 0.0} -> 2075/2860 = 72.6%
+  {'k1': 0.9, 'b': 0.75, 'w_par': 0.6, 'w_type': 0.1} -> 2107/2860 = 73.7%
+  {'k1': 0.9, 'b': 0.75, 'w_par': 0.6, 'w_type': 0.2} -> 2093/2860 = 73.2%
+  {'k1': 0.9, 'b': 0.75, 'w_par': 1.0, 'w_type': 0.0} -> 2078/2860 = 72.7%
+  {'k1': 0.9, 'b': 0.75, 'w_par': 1.0, 'w_type': 0.1} -> 2111/2860 = 73.8%
+  {'k1': 0.9, 'b': 0.75, 'w_par': 1.0, 'w_type': 0.2} -> 2104/2860 = 73.6%
+  {'k1': 1.2, 'b': 0.5, 'w_par': 0.0, 'w_type': 0.0} -> 2024/2860 = 70.8%
+  {'k1': 1.2, 'b': 0.5, 'w_par': 0.0, 'w_type': 0.1} -> 2049/2860 = 71.6%
+  {'k1': 1.2, 'b': 0.5, 'w_par': 0.0, 'w_type': 0.2} -> 2024/2860 = 70.8%
+  {'k1': 1.2, 'b': 0.5, 'w_par': 0.3, 'w_type': 0.0} -> 2082/2860 = 72.8%
+  {'k1': 1.2, 'b': 0.5, 'w_par': 0.3, 'w_type': 0.1} -> 2105/2860 = 73.6%
+  {'k1': 1.2, 'b': 0.5, 'w_par': 0.3, 'w_type': 0.2} -> 2087/2860 = 73.0%
+  {'k1': 1.2, 'b': 0.5, 'w_par': 0.6, 'w_type': 0.0} -> 2097/2860 = 73.3%
+  {'k1': 1.2, 'b': 0.5, 'w_par': 0.6, 'w_type': 0.1} -> 2121/2860 = 74.2%
+  {'k1': 1.2, 'b': 0.5, 'w_par': 0.6, 'w_type': 0.2} -> 2107/2860 = 73.7%
+  {'k1': 1.2, 'b': 0.5, 'w_par': 1.0, 'w_type': 0.0} -> 2084/2860 = 72.9%
+  {'k1': 1.2, 'b': 0.5, 'w_par': 1.0, 'w_type': 0.1} -> 2114/2860 = 73.9%
+  {'k1': 1.2, 'b': 0.5, 'w_par': 1.0, 'w_type': 0.2} -> 2101/2860 = 73.5%
+  {'k1': 1.2, 'b': 0.75, 'w_par': 0.0, 'w_type': 0.0} -> 1987/2860 = 69.5%
+  {'k1': 1.2, 'b': 0.75, 'w_par': 0.0, 'w_type': 0.1} -> 2015/2860 = 70.5%
+  {'k1': 1.2, 'b': 0.75, 'w_par': 0.0, 'w_type': 0.2} -> 1993/2860 = 69.7%
+  {'k1': 1.2, 'b': 0.75, 'w_par': 0.3, 'w_type': 0.0} -> 2051/2860 = 71.7%
+  {'k1': 1.2, 'b': 0.75, 'w_par': 0.3, 'w_type': 0.1} -> 2079/2860 = 72.7%
+  {'k1': 1.2, 'b': 0.75, 'w_par': 0.3, 'w_type': 0.2} -> 2064/2860 = 72.2%
+  {'k1': 1.2, 'b': 0.75, 'w_par': 0.6, 'w_type': 0.0} -> 2057/2860 = 71.9%
+  {'k1': 1.2, 'b': 0.75, 'w_par': 0.6, 'w_type': 0.1} -> 2092/2860 = 73.1%
+  {'k1': 1.2, 'b': 0.75, 'w_par': 0.6, 'w_type': 0.2} -> 2076/2860 = 72.6%
+  {'k1': 1.2, 'b': 0.75, 'w_par': 1.0, 'w_type': 0.0} -> 2062/2860 = 72.1%
+  {'k1': 1.2, 'b': 0.75, 'w_par': 1.0, 'w_type': 0.1} -> 2097/2860 = 73.3%
+  {'k1': 1.2, 'b': 0.75, 'w_par': 1.0, 'w_type': 0.2} -> 2083/2860 = 72.8%
+  {'k1': 1.8, 'b': 0.5, 'w_par': 0.0, 'w_type': 0.0} -> 2007/2860 = 70.2%
+  {'k1': 1.8, 'b': 0.5, 'w_par': 0.0, 'w_type': 0.1} -> 2032/2860 = 71.0%
+  {'k1': 1.8, 'b': 0.5, 'w_par': 0.0, 'w_type': 0.2} -> 1993/2860 = 69.7%
+  {'k1': 1.8, 'b': 0.5, 'w_par': 0.3, 'w_type': 0.0} -> 2062/2860 = 72.1%
+  {'k1': 1.8, 'b': 0.5, 'w_par': 0.3, 'w_type': 0.1} -> 2088/2860 = 73.0%
+  {'k1': 1.8, 'b': 0.5, 'w_par': 0.3, 'w_type': 0.2} -> 2066/2860 = 72.2%
+  {'k1': 1.8, 'b': 0.5, 'w_par': 0.6, 'w_type': 0.0} -> 2076/2860 = 72.6%
+  {'k1': 1.8, 'b': 0.5, 'w_par': 0.6, 'w_type': 0.1} -> 2101/2860 = 73.5%
+  {'k1': 1.8, 'b': 0.5, 'w_par': 0.6, 'w_type': 0.2} -> 2082/2860 = 72.8%
+  {'k1': 1.8, 'b': 0.5, 'w_par': 1.0, 'w_type': 0.0} -> 2072/2860 = 72.4%
+  {'k1': 1.8, 'b': 0.5, 'w_par': 1.0, 'w_type': 0.1} -> 2103/2860 = 73.5%
+  {'k1': 1.8, 'b': 0.5, 'w_par': 1.0, 'w_type': 0.2} -> 2084/2860 = 72.9%
+  {'k1': 1.8, 'b': 0.75, 'w_par': 0.0, 'w_type': 0.0} -> 1934/2860 = 67.6%
+  {'k1': 1.8, 'b': 0.75, 'w_par': 0.0, 'w_type': 0.1} -> 1964/2860 = 68.7%
+  {'k1': 1.8, 'b': 0.75, 'w_par': 0.0, 'w_type': 0.2} -> 1927/2860 = 67.4%
+  {'k1': 1.8, 'b': 0.75, 'w_par': 0.3, 'w_type': 0.0} -> 2014/2860 = 70.4%
+  {'k1': 1.8, 'b': 0.75, 'w_par': 0.3, 'w_type': 0.1} -> 2046/2860 = 71.5%
+  {'k1': 1.8, 'b': 0.75, 'w_par': 0.3, 'w_type': 0.2} -> 2021/2860 = 70.7%
+  {'k1': 1.8, 'b': 0.75, 'w_par': 0.6, 'w_type': 0.0} -> 2024/2860 = 70.8%
+  {'k1': 1.8, 'b': 0.75, 'w_par': 0.6, 'w_type': 0.1} -> 2057/2860 = 71.9%
+  {'k1': 1.8, 'b': 0.75, 'w_par': 0.6, 'w_type': 0.2} -> 2036/2860 = 71.2%
+  {'k1': 1.8, 'b': 0.75, 'w_par': 1.0, 'w_type': 0.0} -> 2028/2860 = 70.9%
+  {'k1': 1.8, 'b': 0.75, 'w_par': 1.0, 'w_type': 0.1} -> 2064/2860 = 72.2%
+  {'k1': 1.8, 'b': 0.75, 'w_par': 1.0, 'w_type': 0.2} -> 2047/2860 = 71.6%
+CHOSEN RETRIEVAL {'k1': 0.9, 'b': 0.5, 'w_par': 0.6, 'w_type': 0.1} (2125/2860)
+gate training rows 4886 (positives 2125, negatives 2761)
+FITTED WEIGHTS (standardised features):
+  bias         -0.3561
+  cov_sent     +0.3167
+  cov_par      -0.3065
+  score        +0.2281
+  margin       +0.0349
+  bigram_sent  -0.0135
+  bigram_par   +0.1025
+  ent_miss     -0.3512
+  type_miss    -0.0976
+  rare_miss    +0.1593
+  n_terms      +0.2577
+  miss_par_cnt +0.0435
+  num_miss     -0.3156
+  ent_miss_sent +0.1783
+  compact      -0.0333
+  matched_rare +0.0956
+  miss_sent_rare -0.3632
+  cov_sent_sq  +0.1946
+THRESHOLD CURVE ON THE TUNING SET
+  thr=0.05: answerable correct 74.3% | unanswerable refused 1.5% | mean of the two 37.9%
+  thr=0.10: answerable correct 74.2% | unanswerable refused 5.2% | mean of the two 39.7%
+  thr=0.15: answerable correct 73.5% | unanswerable refused 9.2% | mean of the two 41.3%
+  thr=0.20: answerable correct 72.0% | unanswerable refused 15.9% | mean of the two 44.0%
+  thr=0.25: answerable correct 69.1% | unanswerable refused 26.2% | mean of the two 47.7%
+  thr=0.30: answerable correct 64.7% | unanswerable refused 37.8% | mean of the two 51.3%
+  thr=0.35: answerable correct 58.7% | unanswerable refused 49.3% | mean of the two 54.0%
+  thr=0.40: answerable correct 51.6% | unanswerable refused 60.8% | mean of the two 56.2%
+  thr=0.45: answerable correct 44.0% | unanswerable refused 70.3% | mean of the two 57.1%
+  thr=0.50: answerable correct 37.7% | unanswerable refused 78.5% | mean of the two 58.1%
+  thr=0.55: answerable correct 30.9% | unanswerable refused 84.1% | mean of the two 57.5%
+  thr=0.60: answerable correct 25.6% | unanswerable refused 89.2% | mean of the two 57.4%
+  thr=0.65: answerable correct 20.0% | unanswerable refused 92.6% | mean of the two 56.3%
+  thr=0.70: answerable correct 12.2% | unanswerable refused 95.9% | mean of the two 54.1%
+  thr=0.75: answerable correct 4.7% | unanswerable refused 98.6% | mean of the two 51.6%
+  thr=0.80: answerable correct 0.9% | unanswerable refused 99.8% | mean of the two 50.4%
+  thr=0.85: answerable correct 0.0% | unanswerable refused 100.0% | mean of the two 50.0%
+  thr=0.90: answerable correct 0.0% | unanswerable refused 100.0% | mean of the two 50.0%
+  thr=0.95: answerable correct 0.0% | unanswerable refused 100.0% | mean of the two 50.0%
+CHOSEN THRESHOLD 0.5 (mean of the two rates 58.1% on tuning)
+TUNING-SET RESULT (optimistic, tuned here): answerable correct 1079/2860 = 37.7% (95% CI 36.0%-39.5%); unanswerable refused 2171/2766 = 78.5% (95% CI 76.9%-80.0%)
+wrote <scratch>/params.json

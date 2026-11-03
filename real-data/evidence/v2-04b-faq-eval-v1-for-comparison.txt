@@ -1,0 +1,8 @@
+[tuned (14 q)] broken: answerable correct 1/10 (95% CI 2%-40%); unanswerable abstained 0/4 (95% CI 0%-49%); citations correct 0/10 (95% CI 0%-28%)
+[tuned (14 q)] fixed: answerable correct 10/10 (95% CI 72%-100%); unanswerable abstained 4/4 (95% CI 51%-100%); citations correct 10/10 (95% CI 72%-100%)
+[second set (8 q)] broken: answerable correct 1/6 (95% CI 3%-56%); unanswerable abstained 0/2 (95% CI 0%-66%); citations correct 0/6 (95% CI 0%-39%)
+[second set (8 q)] fixed: answerable correct 6/6 (95% CI 61%-100%); unanswerable abstained 2/2 (95% CI 34%-100%); citations correct 6/6 (95% CI 61%-100%)
+[frozen set 3 (20 q)] broken: answerable correct 5/10 (95% CI 24%-76%); unanswerable abstained 0/10 (95% CI 0%-28%); citations correct 0/10 (95% CI 0%-28%)
+[frozen set 3 (20 q)] fixed: answerable correct 7/10 (95% CI 40%-89%); unanswerable abstained 7/10 (95% CI 40%-89%); citations correct 7/10 (95% CI 40%-89%)
+[frozen set 4 (17 q, clean test)] broken: answerable correct 3/8 (95% CI 14%-69%); unanswerable abstained 0/9 (95% CI 0%-30%); citations correct 0/8 (95% CI 0%-32%)
+[frozen set 4 (17 q, clean test)] fixed: answerable correct 8/8 (95% CI 68%-100%); unanswerable abstained 6/9 (95% CI 35%-88%); citations correct 8/8 (95% CI 68%-100%)
